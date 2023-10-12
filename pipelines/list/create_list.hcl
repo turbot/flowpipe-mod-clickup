@@ -36,7 +36,7 @@ pipeline "create_list" {
 
   }
 
-  output "response_body" {
+  output "response_body" { 
     value = step.http.create_list.response_body
   }
   output "response_headers" {

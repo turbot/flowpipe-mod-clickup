@@ -20,8 +20,7 @@ pipeline "delete_task" {
   }
 
   output "response_body" {
-    description = "Response body."
-    value       = step.http.delete_task.response_body
+    value = step.http.delete_task.response_body
   }
   output "response_headers" {
     value = step.http.delete_task.response_headers

@@ -18,8 +18,7 @@ pipeline "get_task" {
   }
 
   output "response_body" {
-    description = "Response body."
-    value       = step.http.get_task.response_body
+    value = step.http.get_task.response_body
   }
   output "response_headers" {
     value = step.http.get_task.response_headers

@@ -18,8 +18,7 @@ pipeline "get_space" {
   }
 
   output "response_body" {
-    description = "Response body."
-    value       = step.http.get_space.response_body
+    value = step.http.get_space.response_body
   }
   output "response_headers" {
     value = step.http.get_space.response_headers

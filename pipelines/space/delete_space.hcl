@@ -19,8 +19,7 @@ pipeline "delete_space" {
   }
 
   output "response_body" {
-    description = "Response body."
-    value       = step.http.delete_space.response_body
+    value = step.http.delete_space.response_body
   }
   output "response_headers" {
     value = step.http.delete_space.response_headers

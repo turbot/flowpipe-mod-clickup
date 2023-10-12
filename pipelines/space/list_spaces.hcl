@@ -19,8 +19,7 @@ pipeline "list_spaces" {
   }
 
   output "response_body" {
-    description = "Response body."
-    value       = step.http.list_spaces.response_body
+    value = step.http.list_spaces.response_body
   }
   output "response_headers" {
     value = step.http.list_spaces.response_headers
