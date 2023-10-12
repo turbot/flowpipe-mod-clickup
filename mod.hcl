@@ -1,5 +1,5 @@
 
-mod "github" {
+mod "clickup" {
   title         = "ClickUp"
   description   = "Run pipelines and triggers that interact with ClickUp."
   color         = "#191717"
