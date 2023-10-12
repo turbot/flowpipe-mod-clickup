@@ -13,13 +13,13 @@ pipeline "create_list" {
   }
 
   param "name" {
-    name = "Name of the list."
-    type = string
+    description = "Name of the list."
+    type        = string
   }
 
   param "assignee" {
-    name = "Assignee ID."
-    type = number
+    description = "Assignee ID."
+    type        = number
   }
 
   step "http" "create_list" {
