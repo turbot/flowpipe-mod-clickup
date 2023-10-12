@@ -1,29 +1,30 @@
 pipeline "update_folder" {
-  description = "Update a folder by ID."
+  title       = "Update a Folder in ClickUp by ID"
+  description = "This pipeline updates a folder in ClickUp by its ID using the ClickUp API."
 
-  param "token" {
-    description = "ClickUp API token."
+  param "api_token" {
+    description = "ClickUp API token for authentication."
     type        = string
-    default     = var.token
+    default     = var.api_token
   }
 
   param "folder_id" {
-    description = "Folder ID."
+    description = "The ID of the folder you want to update."
     type        = number
   }
 
   param "name" {
-    description = "Folder name."
+    description = "New folder name."
     type        = string
   }
 
   step "http" "update_folder" {
-    title  = "Update folder"
+    title  = "Update Folder Request"
     method = "put"
     url    = "https://api.clickup.com/api/v2/folder/${param.folder_id}"
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = param.token
+      Authorization = param.api_token
     }
 
     request_body = jsonencode(
@@ -31,7 +32,6 @@ pipeline "update_folder" {
         name = param.name
       }
     )
-
   }
 
   output "response_body" {

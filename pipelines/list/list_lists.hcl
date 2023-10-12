@@ -1,23 +1,23 @@
-// usage: flowpipe pipeline list lists
 pipeline "list_lists" {
-  description = "List all the lists."
+  title       = "List All Lists in a ClickUp Folder"
+  description = "This pipeline lists all lists in a ClickUp folder using the ClickUp API."
 
-  param "token" {
-    description = "ClickUp API token."
+  param "api_token" {
+    description = "ClickUp API token for authentication."
     type        = string
-    default     = var.token
+    default     = var.api_token
   }
 
   param "folder_id" {
-    description = "Folder ID."
+    description = "The ID of the folder where you want to list lists."
     type        = number
   }
 
   step "http" "list_lists" {
-    title = "List lists"
+    title = "List Lists Request"
     url   = "https://api.clickup.com/api/v2/folder/${param.folder_id}/list"
     request_headers = {
-      Authorization = param.token
+      Authorization = param.api_token
     }
   }
 

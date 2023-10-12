@@ -1,33 +1,35 @@
 pipeline "update_space" {
-  description = "Update a space by ID."
+  title       = "Update a Space in ClickUp by ID"
+  description = "This pipeline updates a space in ClickUp by its ID using the ClickUp API."
 
-  param "token" {
-    description = "ClickUp API token."
+  param "api_token" {
+    description = "ClickUp API token for authentication."
     type        = string
-    default     = var.token
+    default     = var.api_token
   }
 
   param "space_id" {
-    description = "Space ID."
+    description = "The ID of the space you want to update."
     type        = number
   }
 
   param "name" {
-    description = "Space name."
+    description = "The updated name of the space."
     type        = string
   }
 
   param "private" {
-    type = bool
+    description = "Specify whether the space should be private (true) or public (false)."
+    type        = bool
   }
 
   step "http" "update_space" {
-    title  = "Update space"
+    title  = "Update Space Request"
     method = "put"
     url    = "https://api.clickup.com/api/v2/space/${param.space_id}"
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = param.token
+      Authorization = param.api_token
     }
 
     request_body = jsonencode(
@@ -36,7 +38,6 @@ pipeline "update_space" {
         private = param.private
       }
     )
-
   }
 
   output "response_body" {

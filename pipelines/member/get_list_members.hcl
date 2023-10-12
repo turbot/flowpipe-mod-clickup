@@ -1,19 +1,20 @@
 pipeline "get_list_members" {
-  description = "Get members of a list by ID."
+  title       = "Get Members of a ClickUp List by ID"
+  description = "This pipeline retrieves the members of a ClickUp list by its ID using the ClickUp API."
 
   param "token" {
-    description = "ClickUp API token."
+    description = "ClickUp API token for authentication."
     type        = string
     default     = var.token
   }
 
   param "list_id" {
-    description = "ClickUp list ID."
+    description = "The ID of the list for which you want to retrieve members."
     type        = number
   }
 
   step "http" "get_list_members" {
-    title = "Get list"
+    title = "Get List Members Request"
     url   = "https://api.clickup.com/api/v2/list/${param.list_id}/member"
     request_headers = {
       Authorization = param.token

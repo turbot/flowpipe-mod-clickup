@@ -1,22 +1,23 @@
-// usage: flowpipe pipeline list spaces
 pipeline "list_spaces" {
-  description = "List all spaces."
+  title       = "List All Spaces in ClickUp"
+  description = "This pipeline lists all spaces in ClickUp using the ClickUp API."
 
-  param "token" {
-    description = "ClickUp API token."
+  param "api_token" {
+    description = "ClickUp API token for authentication."
     type        = string
-    default     = var.token
+    default     = var.api_token
   }
 
   param "team_id" {
-    type = string
+    description = "The ID of the team for which you want to list spaces."
+    type        = string
   }
 
   step "http" "list_spaces" {
-    title = "List spaces"
+    title = "List Spaces Request"
     url   = "https://api.clickup.com/api/v2/team/${param.team_id}/space"
     request_headers = {
-      Authorization = param.token
+      Authorization = param.api_token
     }
   }
 

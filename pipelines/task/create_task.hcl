@@ -1,34 +1,35 @@
 pipeline "create_task" {
-  description = "Create a task."
+  title       = "Create a Task in ClickUp"
+  description = "This pipeline creates a task in ClickUp using the ClickUp API."
 
-  param "token" {
-    description = "ClickUp API token."
+  param "api_token" {
+    description = "ClickUp API token for authentication."
     type        = string
-    default     = var.token
+    default     = var.api_token
   }
 
   param "list_id" {
-    description = "ClickUp list ID."
+    description = "The ID of the list where you want to create the task."
     type        = number
   }
 
   param "name" {
-    description = "Task name."
+    description = "The name of the task you want to create."
     type        = string
   }
 
   param "description" {
-    description = "Task description."
+    description = "The description of the task."
     type        = string
   }
 
   step "http" "create_task" {
-    title  = "Create task"
+    title  = "Create Task Request"
     method = "post"
     url    = "https://api.clickup.com/api/v2/list/${param.list_id}/task"
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = param.token
+      Authorization = param.api_token
     }
 
     request_body = jsonencode(
@@ -37,7 +38,6 @@ pipeline "create_task" {
         description = param.description
       }
     )
-
   }
 
   output "response_body" {

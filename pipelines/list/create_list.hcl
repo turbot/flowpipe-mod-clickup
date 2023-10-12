@@ -1,44 +1,44 @@
 pipeline "create_list" {
-  description = "Create a list."
+  title       = "Create a List in ClickUp"
+  description = "This pipeline creates a list in ClickUp using the ClickUp API."
 
-  param "token" {
-    description = "ClickUp API token."
+  param "api_token" {
+    description = "ClickUp API token for authentication."
     type        = string
-    default     = var.token
+    default     = var.api_token
   }
 
   param "folder_id" {
-    description = "Folder ID."
+    description = "The ID of the folder where you want to create the list."
     type        = number
   }
 
   param "name" {
-    description = "Name of the list."
+    description = "The name of the list you want to create."
     type        = string
   }
 
   param "assignee" {
-    description = "Assignee ID."
+    description = "The ID of the assignee for the list (optional)."
     type        = number
   }
 
   step "http" "create_list" {
-    title  = "Create a list"
+    title  = "Create List Request"
     method = "post"
     url    = "https://api.clickup.com/api/v2/folder/${param.folder_id}/list"
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = param.token
+      Authorization = param.api_token
     }
 
-    // We can add for more fields here as per requirement
+    // We can add more fields here as per requirements
     request_body = jsonencode(
       {
         name     = param.name
         assignee = param.assignee
       }
     )
-
   }
 
   output "response_body" {

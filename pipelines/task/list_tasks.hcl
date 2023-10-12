@@ -1,23 +1,23 @@
-// usage: flowpipe pipeline list tasks
 pipeline "list_tasks" {
-  description = "List all tasks."
+  title       = "List Tasks in ClickUp"
+  description = "This pipeline lists all tasks in a specific ClickUp list using the ClickUp API."
 
-  param "token" {
-    description = "ClickUp API token."
+  param "api_token" {
+    description = "ClickUp API token for authentication."
     type        = string
-    default     = var.token
+    default     = var.api_token
   }
 
   param "list_id" {
-    description = "ClickUp list ID."
+    description = "The ID of the list for which you want to list tasks."
     type        = number
   }
 
   step "http" "list_tasks" {
-    title = "List tasks"
+    title = "List Tasks Request"
     url   = "https://api.clickup.com/api/v2/task/${param.list_id}"
     request_headers = {
-      Authorization = param.token
+      Authorization = param.api_token
     }
   }
 

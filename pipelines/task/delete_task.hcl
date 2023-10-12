@@ -1,24 +1,25 @@
 pipeline "delete_task" {
-  description = "Delete a task by ID."
+  title       = "Delete a Task in ClickUp by ID"
+  description = "This pipeline deletes a task in ClickUp by its ID using the ClickUp API."
 
-  param "token" {
-    description = "ClickUp API token."
+  param "api_token" {
+    description = "ClickUp API token for authentication."
     type        = string
-    default     = var.token
+    default     = var.api_token
   }
 
   param "task_id" {
-    description = "ClickUp task ID."
+    description = "The ID of the task you want to delete."
     type        = string
   }
 
   step "http" "delete_task" {
-    title  = "Delete task"
+    title  = "Delete Task Request"
     url    = "https://api.clickup.com/api/v2/task/${param.task_id}"
     method = "delete"
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = param.token
+      Authorization = param.api_token
     }
   }
 

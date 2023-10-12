@@ -1,24 +1,25 @@
 pipeline "delete_list" {
-  description = "Delete a list by ID."
+  title       = "Delete a List in ClickUp by ID"
+  description = "This pipeline deletes a list in ClickUp by its ID using the ClickUp API."
 
-  param "token" {
-    description = "ClickUp API token."
+  param "api_token" {
+    description = "ClickUp API token for authentication."
     type        = string
-    default     = var.token
+    default     = var.api_token
   }
 
   param "list_id" {
-    description = "ClickUp list ID."
+    description = "The ID of the list you want to delete."
     type        = number
   }
 
   step "http" "delete_list" {
-    title  = "Delete a list"
-    url    = "https://api.clickup.com/api/v2/list/${param.list_id}"
+    title  = "Delete List Request"
     method = "delete"
+    url    = "https://api.clickup.com/api/v2/list/${param.list_id}"
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = param.token
+      Authorization = param.api_token
     }
   }
 

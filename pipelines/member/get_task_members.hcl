@@ -1,19 +1,20 @@
 pipeline "get_task_members" {
-  description = "Get members of a task by ID."
+  title       = "Get Members of a ClickUp Task by ID"
+  description = "This pipeline retrieves the members of a ClickUp task by its ID using the ClickUp API."
 
   param "token" {
-    description = "ClickUp API token."
+    description = "ClickUp API token for authentication."
     type        = string
     default     = var.token
   }
 
   param "task_id" {
-    description = "ClickUp task ID."
+    description = "The ID of the task for which you want to retrieve members."
     type        = string
   }
 
   step "http" "get_task_members" {
-    title = "Get task"
+    title = "Get Task Members Request"
     url   = "https://api.clickup.com/api/v2/task/${param.task_id}/member"
     request_headers = {
       Authorization = param.token

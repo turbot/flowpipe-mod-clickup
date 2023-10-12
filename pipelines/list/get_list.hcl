@@ -1,22 +1,23 @@
 pipeline "get_list" {
-  description = "Get a list by ID."
+  title       = "Get a List in ClickUp by ID"
+  description = "This pipeline retrieves a list in ClickUp by its ID using the ClickUp API."
 
-  param "token" {
-    description = "ClickUp API token."
+  param "api_token" {
+    description = "ClickUp API token for authentication."
     type        = string
-    default     = var.token
+    default     = var.api_token
   }
 
   param "list_id" {
-    description = "ClickUp list ID."
+    description = "The ID of the list you want to retrieve."
     type        = number
   }
 
   step "http" "get_list" {
-    title = "Get list"
+    title = "Get List Request"
     url   = "https://api.clickup.com/api/v2/list/${param.list_id}"
     request_headers = {
-      Authorization = param.token
+      Authorization = param.api_token
     }
   }
 

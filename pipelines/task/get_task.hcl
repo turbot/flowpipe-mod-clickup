@@ -1,22 +1,23 @@
 pipeline "get_task" {
-  description = "Get a task by ID."
+  title       = "Get a Task in ClickUp by ID"
+  description = "This pipeline retrieves a task in ClickUp by its ID using the ClickUp API."
 
-  param "token" {
-    description = "ClickUp API token."
+  param "api_token" {
+    description = "ClickUp API token for authentication."
     type        = string
-    default     = var.token
+    default     = var.api_token
   }
 
   param "task_id" {
-    description = "ClickUp task ID."
+    description = "The ID of the task you want to retrieve."
     type        = string
   }
 
   step "http" "get_task" {
-    title = "Get task"
+    title = "Get Task Request"
     url   = "https://api.clickup.com/api/v2/task/${param.task_id}"
     request_headers = {
-      Authorization = param.token
+      Authorization = param.api_token
     }
   }
 

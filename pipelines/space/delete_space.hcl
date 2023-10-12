@@ -1,23 +1,24 @@
 pipeline "delete_space" {
-  description = "Delete a space by ID."
+  title       = "Delete a Space in ClickUp by ID"
+  description = "This pipeline deletes a space in ClickUp by its ID using the ClickUp API."
 
-  param "token" {
-    description = "ClickUp API token."
+  param "api_token" {
+    description = "ClickUp API token for authentication."
     type        = string
-    default     = var.token
+    default     = var.api_token
   }
 
   param "space_id" {
-    description = "Space ID."
+    description = "The ID of the space you want to delete."
     type        = string
   }
 
   step "http" "delete_space" {
-    title  = "Delete space"
+    title  = "Delete Space Request"
     url    = "https://api.clickup.com/api/v2/space/${param.space_id}"
     method = "delete"
     request_headers = {
-      Authorization = param.token
+      Authorization = param.api_token
     }
   }
 
