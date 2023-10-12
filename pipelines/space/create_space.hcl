@@ -2,23 +2,28 @@ pipeline "create_space" {
   description = "Create a space."
 
   param "token" {
-    type    = string
-    default = var.token
+    description = "ClickUp API token."
+    type        = string
+    default     = var.token
   }
 
   param "team_id" {
-    type = number
+    description = "ClickUp team ID."
+    type        = number
   }
 
   param "name" {
-    type = string
+    description = "Name of the space."
+    type        = string
   }
 
   param "private" {
-    type = bool
+    description = "Whether the space is private or not."
+    type        = bool
   }
 
   step "http" "create_space" {
+    title  = "Create a space"
     method = "post"
     url    = "https://api.clickup.com/api/v2/team/${param.team_id}/space"
     request_headers = {

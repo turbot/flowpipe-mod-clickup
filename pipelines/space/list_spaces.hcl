@@ -3,8 +3,9 @@ pipeline "list_spaces" {
   description = "List all spaces."
 
   param "token" {
-    type    = string
-    default = var.token
+    description = "ClickUp API token."
+    type        = string
+    default     = var.token
   }
 
   param "team_id" {
@@ -12,7 +13,8 @@ pipeline "list_spaces" {
   }
 
   step "http" "list_spaces" {
-    url = "https://api.clickup.com/api/v2/team/${param.team_id}/space"
+    title = "List spaces"
+    url   = "https://api.clickup.com/api/v2/team/${param.team_id}/space"
     request_headers = {
       Authorization = param.token
     }

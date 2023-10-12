@@ -3,16 +3,19 @@ pipeline "list_lists" {
   description = "List all the lists."
 
   param "token" {
-    type    = string
-    default = var.token
+    description = "ClickUp API token."
+    type        = string
+    default     = var.token
   }
 
   param "folder_id" {
-    type = number
+    description = "Folder ID."
+    type        = number
   }
 
   step "http" "list_lists" {
-    url = "https://api.clickup.com/api/v2/folder/${param.folder_id}/list"
+    title = "List lists"
+    url   = "https://api.clickup.com/api/v2/folder/${param.folder_id}/list"
     request_headers = {
       Authorization = param.token
     }

@@ -2,15 +2,18 @@ pipeline "delete_space" {
   description = "Delete a space by ID."
 
   param "token" {
-    type    = string
-    default = var.token
+    description = "ClickUp API token."
+    type        = string
+    default     = var.token
   }
 
   param "space_id" {
-    type = string
+    description = "Space ID."
+    type        = string
   }
 
   step "http" "delete_space" {
+    title  = "Delete space"
     url    = "https://api.clickup.com/api/v2/space/${param.space_id}"
     method = "delete"
     request_headers = {

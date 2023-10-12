@@ -2,16 +2,19 @@ pipeline "get_filtered_team_task" {
   description = "Get a task by ID."
 
   param "token" {
-    type    = string
-    default = var.token
+    description = "ClickUp API token."
+    type        = string
+    default     = var.token
   }
 
   param "team_id" {
-    type = number
+    description = "ClickUp team ID."
+    type        = number
   }
 
   step "http" "get_filtered_team_task" {
-    url = "https://api.clickup.com/api/v2/team/${param.team_id}/task"
+    title = "Get a task by ID"
+    url   = "https://api.clickup.com/api/v2/team/${param.team_id}/task"
     request_headers = {
       Authorization = param.token
     }

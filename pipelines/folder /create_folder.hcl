@@ -2,19 +2,23 @@ pipeline "create_folder" {
   description = "Create a folder."
 
   param "token" {
-    type    = string
-    default = var.token
+    description = "ClickUp API token."
+    type        = string
+    default     = var.token
   }
 
   param "space_id" {
-    type = number
+    description = "Space ID."
+    type        = number
   }
 
   param "name" {
-    type = string
+    description = "Folder name."
+    type        = string
   }
 
   step "http" "create_folder" {
+    title  = "Create folder"
     method = "post"
     url    = "https://api.clickup.com/api/v2/space/${param.space_id}/folder"
     request_headers = {

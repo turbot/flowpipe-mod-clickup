@@ -2,23 +2,28 @@ pipeline "update_task" {
   description = "Update a task by ID."
 
   param "token" {
-    type    = string
-    default = var.token
+    description = "ClickUp API token."
+    type        = string
+    default     = var.token
   }
 
   param "task_id" {
-    type = string
+    description = "ClickUp task ID."
+    type        = string
   }
 
   param "name" {
-    type = string
+    description = "Task name."
+    type        = string
   }
 
   param "status" {
-    type = string
+    description = "Task status."
+    type        = string
   }
 
   step "http" "update_task" {
+    title  = "Update task"
     method = "put"
     url    = "https://api.clickup.com/api/v2/task/${param.task_id}"
     request_headers = {

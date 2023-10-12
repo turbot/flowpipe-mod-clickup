@@ -2,19 +2,23 @@ pipeline "add_task_to_list" {
   description = "Add task to list."
 
   param "token" {
-    type    = string
-    default = var.token
+    description = "ClickUp API token."
+    type        = string
+    default     = var.token
   }
 
   param "list_id" {
-    type = number
+    description = "ClickUp list ID."
+    type        = number
   }
 
   param "task_id" {
-    type = string
+    description = "ClickUp task ID."
+    type        = string
   }
 
   step "http" "add_task_to_list" {
+    title  = "Add task to list"
     method = "post"
     url    = "https://api.clickup.com/api/v2/list/${param.list_id}/task/${param.task_id}"
     request_headers = {

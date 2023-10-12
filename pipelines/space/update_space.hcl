@@ -2,16 +2,19 @@ pipeline "update_space" {
   description = "Update a space by ID."
 
   param "token" {
-    type    = string
-    default = var.token
+    description = "ClickUp API token."
+    type        = string
+    default     = var.token
   }
 
   param "space_id" {
-    type = number
+    description = "Space ID."
+    type        = number
   }
 
   param "name" {
-    type = string
+    description = "Space name."
+    type        = string
   }
 
   param "private" {
@@ -19,6 +22,7 @@ pipeline "update_space" {
   }
 
   step "http" "update_space" {
+    title  = "Update space"
     method = "put"
     url    = "https://api.clickup.com/api/v2/space/${param.space_id}"
     request_headers = {

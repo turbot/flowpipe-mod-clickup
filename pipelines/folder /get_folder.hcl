@@ -2,16 +2,19 @@ pipeline "get_folder" {
   description = "Get a folder by ID."
 
   param "token" {
-    type    = string
-    default = var.token
+    description = "ClickUp API token."
+    type        = string
+    default     = var.token
   }
 
   param "folder_id" {
-    type = number
+    description = "Folder ID."
+    type        = number
   }
 
   step "http" "get_folder" {
-    url = "https://api.clickup.com/api/v2/folder/${param.folder_id}"
+    title = "Get folder"
+    url   = "https://api.clickup.com/api/v2/folder/${param.folder_id}"
     request_headers = {
       Authorization = param.token
     }

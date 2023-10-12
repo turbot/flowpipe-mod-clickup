@@ -2,23 +2,28 @@ pipeline "create_list" {
   description = "Create a list."
 
   param "token" {
-    type    = string
-    default = var.token
+    description = "ClickUp API token."
+    type        = string
+    default     = var.token
   }
 
   param "folder_id" {
-    type = number
+    description = "Folder ID."
+    type        = number
   }
 
   param "name" {
+    name = "Name of the list."
     type = string
   }
 
   param "assignee" {
+    name = "Assignee ID."
     type = number
   }
 
   step "http" "create_list" {
+    title  = "Create a list"
     method = "post"
     url    = "https://api.clickup.com/api/v2/folder/${param.folder_id}/list"
     request_headers = {
@@ -36,7 +41,7 @@ pipeline "create_list" {
 
   }
 
-  output "response_body" { 
+  output "response_body" {
     value = step.http.create_list.response_body
   }
   output "response_headers" {

@@ -2,15 +2,18 @@ pipeline "delete_folder" {
   description = "Delete a folder by ID."
 
   param "token" {
-    type    = string
-    default = var.token
+    description = "ClickUp API token."
+    type        = string
+    default     = var.token
   }
 
   param "folder_id" {
-    type = number
+    description = "Folder ID."
+    type        = number
   }
 
   step "http" "delete_folder" {
+    title  = "Delete folder"
     url    = "https://api.clickup.com/api/v2/folder/${param.folder_id}"
     method = "delete"
     request_headers = {
