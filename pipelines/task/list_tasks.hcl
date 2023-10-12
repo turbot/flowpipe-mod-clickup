@@ -8,7 +8,7 @@ pipeline "list_tasks" {
   }
 
   param "list_id" {
-    type    = number
+    type = number
   }
 
   step "http" "list_tasks" {

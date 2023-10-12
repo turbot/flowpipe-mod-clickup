@@ -19,7 +19,7 @@ pipeline "list_lists" {
   }
 
   output "response_body" {
-    value       = step.http.list_lists.response_body
+    value = step.http.list_lists.response_body
   }
   output "response_headers" {
     value = step.http.list_lists.response_headers
