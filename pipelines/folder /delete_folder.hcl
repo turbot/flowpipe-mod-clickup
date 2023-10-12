@@ -14,7 +14,6 @@ pipeline "delete_folder" {
   }
 
   step "http" "delete_folder" {
-    title  = "Delete Folder Request"
     method = "delete"
     url    = "https://api.clickup.com/api/v2/folder/${param.folder_id}"
     request_headers = {

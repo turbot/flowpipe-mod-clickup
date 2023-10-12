@@ -14,7 +14,6 @@ pipeline "list_lists" {
   }
 
   step "http" "list_lists" {
-    title = "List Lists Request"
     url   = "https://api.clickup.com/api/v2/folder/${param.folder_id}/list"
     request_headers = {
       Authorization = param.api_token

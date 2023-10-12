@@ -24,7 +24,6 @@ pipeline "update_task" {
   }
 
   step "http" "update_task" {
-    title  = "Update Task Request"
     method = "put"
     url    = "https://api.clickup.com/api/v2/task/${param.task_id}"
     request_headers = {

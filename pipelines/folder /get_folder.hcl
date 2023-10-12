@@ -14,7 +14,6 @@ pipeline "get_folder" {
   }
 
   step "http" "get_folder" {
-    title  = "Get Folder Request"
     url    = "https://api.clickup.com/api/v2/folder/${param.folder_id}"
     request_headers = {
       Authorization = param.api_token

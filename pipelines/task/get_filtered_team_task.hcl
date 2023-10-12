@@ -14,7 +14,6 @@ pipeline "get_filtered_team_task" {
   }
 
   step "http" "get_filtered_team_task" {
-    title = "Get Team Tasks Request"
     url   = "https://api.clickup.com/api/v2/team/${param.team_id}/task"
     request_headers = {
       Authorization = param.api_token

@@ -24,7 +24,6 @@ pipeline "create_list" {
   }
 
   step "http" "create_list" {
-    title  = "Create List Request"
     method = "post"
     url    = "https://api.clickup.com/api/v2/folder/${param.folder_id}/list"
     request_headers = {

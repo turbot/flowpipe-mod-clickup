@@ -24,7 +24,6 @@ pipeline "update_space" {
   }
 
   step "http" "update_space" {
-    title  = "Update Space Request"
     method = "put"
     url    = "https://api.clickup.com/api/v2/space/${param.space_id}"
     request_headers = {

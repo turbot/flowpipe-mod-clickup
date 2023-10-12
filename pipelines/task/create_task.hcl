@@ -24,7 +24,6 @@ pipeline "create_task" {
   }
 
   step "http" "create_task" {
-    title  = "Create Task Request"
     method = "post"
     url    = "https://api.clickup.com/api/v2/list/${param.list_id}/task"
     request_headers = {

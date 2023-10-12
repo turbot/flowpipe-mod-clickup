@@ -19,7 +19,6 @@ pipeline "add_task_to_list" {
   }
 
   step "http" "add_task_to_list" {
-    title  = "Add Task to List Request"
     method = "post"
     url    = "https://api.clickup.com/api/v2/list/${param.list_id}/task/${param.task_id}"
     request_headers = {

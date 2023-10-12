@@ -19,7 +19,6 @@ pipeline "remove_task_from_list" {
   }
 
   step "http" "remove_task_from_list" {
-    title  = "Remove Task from List Request"
     method = "delete"
     url    = "https://api.clickup.com/api/v2/list/${param.list_id}/task/${param.task_id}"
     request_headers = {

@@ -24,7 +24,6 @@ pipeline "create_space" {
   }
 
   step "http" "create_space" {
-    title  = "Create Space Request"
     method = "post"
     url    = "https://api.clickup.com/api/v2/team/${param.team_id}/space"
     request_headers = {

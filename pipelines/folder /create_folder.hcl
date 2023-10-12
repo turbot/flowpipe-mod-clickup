@@ -19,7 +19,6 @@ pipeline "create_folder" {
   }
 
   step "http" "create_folder" {
-    title  = "Create Folder Request"
     method = "post"
     url    = "https://api.clickup.com/api/v2/space/${param.space_id}/folder"
     request_headers = {

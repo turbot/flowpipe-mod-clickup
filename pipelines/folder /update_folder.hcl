@@ -19,7 +19,6 @@ pipeline "update_folder" {
   }
 
   step "http" "update_folder" {
-    title  = "Update Folder Request"
     method = "put"
     url    = "https://api.clickup.com/api/v2/folder/${param.folder_id}"
     request_headers = {

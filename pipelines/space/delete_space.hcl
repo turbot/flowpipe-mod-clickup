@@ -14,7 +14,6 @@ pipeline "delete_space" {
   }
 
   step "http" "delete_space" {
-    title  = "Delete Space Request"
     url    = "https://api.clickup.com/api/v2/space/${param.space_id}"
     method = "delete"
     request_headers = {

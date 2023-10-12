@@ -14,7 +14,6 @@ pipeline "get_task" {
   }
 
   step "http" "get_task" {
-    title = "Get Task Request"
     url   = "https://api.clickup.com/api/v2/task/${param.task_id}"
     request_headers = {
       Authorization = param.api_token

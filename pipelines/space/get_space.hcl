@@ -14,7 +14,6 @@ pipeline "get_space" {
   }
 
   step "http" "get_space" {
-    title = "Get Space Request"
     url   = "https://api.clickup.com/api/v2/space/${param.space_id}"
     request_headers = {
       Authorization = param.api_token

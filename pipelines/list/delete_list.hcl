@@ -14,7 +14,6 @@ pipeline "delete_list" {
   }
 
   step "http" "delete_list" {
-    title  = "Delete List Request"
     method = "delete"
     url    = "https://api.clickup.com/api/v2/list/${param.list_id}"
     request_headers = {

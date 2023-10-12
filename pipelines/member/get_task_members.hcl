@@ -14,7 +14,6 @@ pipeline "get_task_members" {
   }
 
   step "http" "get_task_members" {
-    title = "Get Task Members Request"
     url   = "https://api.clickup.com/api/v2/task/${param.task_id}/member"
     request_headers = {
       Authorization = param.token
