@@ -22,13 +22,4 @@ pipeline "delete_list" {
     }
   }
 
-  output "response_body" {
-    value = step.http.delete_list.response_body
-  }
-  output "response_headers" {
-    value = step.http.delete_list.response_headers
-  }
-  output "status_code" {
-    value = step.http.delete_list.status_code
-  }
 }

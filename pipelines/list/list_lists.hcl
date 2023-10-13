@@ -14,19 +14,14 @@ pipeline "list_lists" {
   }
 
   step "http" "list_lists" {
-    url   = "https://api.clickup.com/api/v2/folder/${param.folder_id}/list"
+    url = "https://api.clickup.com/api/v2/folder/${param.folder_id}/list"
     request_headers = {
       Authorization = param.api_token
     }
   }
 
-  output "response_body" {
-    value = step.http.list_lists.response_body
-  }
-  output "response_headers" {
-    value = step.http.list_lists.response_headers
-  }
-  output "status_code" {
-    value = step.http.list_lists.status_code
+  output "lists" {
+    value       = step.http.list_lists.response_body.lists
+    description = "The lists in the folder."
   }
 }

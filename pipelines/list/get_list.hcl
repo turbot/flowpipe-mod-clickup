@@ -14,19 +14,15 @@ pipeline "get_list" {
   }
 
   step "http" "get_list" {
-    url   = "https://api.clickup.com/api/v2/list/${param.list_id}"
+    url = "https://api.clickup.com/api/v2/list/${param.list_id}"
     request_headers = {
       Authorization = param.api_token
     }
   }
 
-  output "response_body" {
-    value = step.http.get_list.response_body
+  output "list" {
+    value       = step.http.get_list.response_body
+    description = "The list retrieved from ClickUp."
   }
-  output "response_headers" {
-    value = step.http.get_list.response_headers
-  }
-  output "status_code" {
-    value = step.http.get_list.status_code
-  }
+
 }

@@ -14,19 +14,15 @@ pipeline "get_space" {
   }
 
   step "http" "get_space" {
-    url   = "https://api.clickup.com/api/v2/space/${param.space_id}"
+    url = "https://api.clickup.com/api/v2/space/${param.space_id}"
     request_headers = {
       Authorization = param.api_token
     }
   }
 
-  output "response_body" {
-    value = step.http.get_space.response_body
+  output "space" {
+    value       = step.http.get_space.response_body
+    description = "The space retrieved from ClickUp."
   }
-  output "response_headers" {
-    value = step.http.get_space.response_headers
-  }
-  output "status_code" {
-    value = step.http.get_space.status_code
-  }
+
 }

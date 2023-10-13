@@ -33,13 +33,8 @@ pipeline "update_folder" {
     )
   }
 
-  output "response_body" {
-    value = step.http.update_folder.response_body
-  }
-  output "response_headers" {
-    value = step.http.update_folder.response_headers
-  }
-  output "status_code" {
-    value = step.http.update_folder.status_code
+  output "folder" {
+    value       = step.http.update_folder.response_body
+    description = "The updated folder."
   }
 }
