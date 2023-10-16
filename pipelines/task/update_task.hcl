@@ -39,8 +39,13 @@ pipeline "update_task" {
     )
   }
 
-  output "task" {
-    description = "The updated task."
-    value       = step.http.update_task.response.body
+  output "response_body" {
+    value = step.http.update_task.response_body
+  }
+  output "response_headers" {
+    value = step.http.update_task.response_headers
+  }
+  output "status_code" {
+    value = step.http.update_task.status_code
   }
 }

@@ -39,8 +39,13 @@ pipeline "create_task" {
     )
   }
 
-  output "task" {
-    value        = step.http.create_task.response_body
-    description = "The task that was created."
+  output "response_body" {
+    value = step.http.create_task.response_body
+  }
+  output "response_headers" {
+    value = step.http.create_task.response_headers
+  }
+  output "status_code" {
+    value = step.http.create_task.status_code
   }
 }

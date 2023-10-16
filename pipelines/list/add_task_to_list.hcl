@@ -25,4 +25,14 @@ pipeline "add_task_to_list" {
       Authorization = param.api_token
     }
   }
+
+  output "response_body" {
+    value = step.http.add_task_to_list.response_body
+  }
+  output "response_headers" {
+    value = step.http.add_task_to_list.response_headers
+  }
+  output "status_code" {
+    value = step.http.add_task_to_list.status_code
+  }
 }

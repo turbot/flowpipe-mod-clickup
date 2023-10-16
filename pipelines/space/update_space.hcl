@@ -39,9 +39,13 @@ pipeline "update_space" {
     )
   }
 
-  output "space" {
-    value       = step.http.update_space.response_body
-    description = "The updated space."
+  output "response_body" {
+    value = step.http.update_space.response_body
   }
-
+  output "response_headers" {
+    value = step.http.update_space.response_headers
+  }
+  output "status_code" {
+    value = step.http.update_space.status_code
+  }
 }

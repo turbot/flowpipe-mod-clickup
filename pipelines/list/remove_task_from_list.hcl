@@ -26,4 +26,13 @@ pipeline "remove_task_from_list" {
     }
   }
 
+  output "response_body" {
+    value = step.http.remove_task_from_list.response_body
+  }
+  output "response_headers" {
+    value = step.http.remove_task_from_list.response_headers
+  }
+  output "status_code" {
+    value = step.http.remove_task_from_list.status_code
+  }
 }

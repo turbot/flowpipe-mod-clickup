@@ -22,4 +22,13 @@ pipeline "delete_task" {
     }
   }
 
+  output "response_body" {
+    value = step.http.delete_task.response_body
+  }
+  output "response_headers" {
+    value = step.http.delete_task.response_headers
+  }
+  output "status_code" {
+    value = step.http.delete_task.status_code
+  }
 }

@@ -40,8 +40,13 @@ pipeline "create_space" {
     )
   }
 
-  output "space" {
-    description = "The space that was created."
-    value       = step.http.create_space.response_body
+  output "response_body" {
+    value = step.http.create_space.response_body
+  }
+  output "response_headers" {
+    value = step.http.create_space.response_headers
+  }
+  output "status_code" {
+    value = step.http.create_space.status_code
   }
 }

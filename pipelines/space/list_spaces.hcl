@@ -14,15 +14,19 @@ pipeline "list_spaces" {
   }
 
   step "http" "list_spaces" {
-    url = "https://api.clickup.com/api/v2/team/${param.team_id}/space"
+    url   = "https://api.clickup.com/api/v2/team/${param.team_id}/space"
     request_headers = {
       Authorization = param.api_token
     }
   }
 
-  output "spaces" {
-    value       = step.http.list_spaces.response_body.spaces
-    description = "The list of spaces in the team."
+  output "response_body" {
+    value = step.http.list_spaces.response_body
   }
-
+  output "response_headers" {
+    value = step.http.list_spaces.response_headers
+  }
+  output "status_code" {
+    value = step.http.list_spaces.status_code
+  }
 }

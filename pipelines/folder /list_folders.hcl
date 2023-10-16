@@ -20,8 +20,13 @@ pipeline "list_folders" {
     }
   }
 
-  output "folders" {
-    value       = step.http.list_folders.response_body.folders
-    description = "The list of folders."
+  output "response_body" {
+    value = step.http.list_folders.response_body
+  }
+  output "response_headers" {
+    value = step.http.list_folders.response_headers
+  }
+  output "status_code" {
+    value = step.http.list_folders.status_code
   }
 }

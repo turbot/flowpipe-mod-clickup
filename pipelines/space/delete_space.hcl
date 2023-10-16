@@ -21,4 +21,13 @@ pipeline "delete_space" {
     }
   }
 
+  output "response_body" {
+    value = step.http.delete_space.response_body
+  }
+  output "response_headers" {
+    value = step.http.delete_space.response_headers
+  }
+  output "status_code" {
+    value = step.http.delete_space.status_code
+  }
 }

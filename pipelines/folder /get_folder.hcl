@@ -14,14 +14,19 @@ pipeline "get_folder" {
   }
 
   step "http" "get_folder" {
-    url = "https://api.clickup.com/api/v2/folder/${param.folder_id}"
+    url    = "https://api.clickup.com/api/v2/folder/${param.folder_id}"
     request_headers = {
       Authorization = param.api_token
     }
   }
 
-  output "folder" {
-    value       = step.get_folder.response_body
-    description = "The folder retrieved from ClickUp."
+  output "response_body" {
+    value = step.http.get_folder.response_body
+  }
+  output "response_headers" {
+    value = step.http.get_folder.response_headers
+  }
+  output "status_code" {
+    value = step.http.get_folder.status_code
   }
 }
