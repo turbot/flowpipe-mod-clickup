@@ -2,10 +2,10 @@ pipeline "get_list_members" {
   title       = "Get Members of a ClickUp List by ID"
   description = "This pipeline retrieves the members of a ClickUp list by its ID using the ClickUp API."
 
-  param "token" {
+  param "api_token" {
     description = "ClickUp API token for authentication."
     type        = string
-    default     = var.token
+    default     = var.api_token
   }
 
   param "list_id" {

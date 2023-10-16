@@ -2,10 +2,10 @@ pipeline "get_task_members" {
   title       = "Get Members of a ClickUp Task by ID"
   description = "This pipeline retrieves the members of a ClickUp task by its ID using the ClickUp API."
 
-  param "token" {
+  param "api_token" {
     description = "ClickUp API token for authentication."
     type        = string
-    default     = var.token
+    default     = var.api_token
   }
 
   param "task_id" {
