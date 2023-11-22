@@ -15,13 +15,11 @@ pipeline "update_task" {
 
   param "name" {
     description = "New name for the task."
-    optional    = true
     type        = string
   }
 
   param "status" {
     description = "New task status."
-    optional    = true
     type        = string
   }
 
@@ -41,13 +39,8 @@ pipeline "update_task" {
     )
   }
 
-  output "response_body" {
-    value = step.http.update_task.response_body
-  }
-  output "response_headers" {
-    value = step.http.update_task.response_headers
-  }
-  output "status_code" {
-    value = step.http.update_task.status_code
+  output "task" {
+    value       = step.http.update_task.response_body
+    description = "The updated task."
   }
 }

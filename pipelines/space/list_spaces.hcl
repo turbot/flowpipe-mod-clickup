@@ -20,13 +20,8 @@ pipeline "list_spaces" {
     }
   }
 
-  output "response_body" {
-    value = step.http.list_spaces.response_body
-  }
-  output "response_headers" {
-    value = step.http.list_spaces.response_headers
-  }
-  output "status_code" {
-    value = step.http.list_spaces.status_code
+  output "spaces" {
+    value       = step.http.list_spaces.response_body.spaces
+    description = "The list of spaces."
   }
 }

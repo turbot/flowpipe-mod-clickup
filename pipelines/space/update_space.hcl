@@ -13,14 +13,48 @@ pipeline "update_space" {
     type        = number
   }
 
-  param "name" {
-    description = "The new name of the space."
-    type        = string
-  }
+  param "space" {
+    type = object({
+      name               = string
+      color              = string
+      private            = bool
+      admin_can_manage   = bool
+      multiple_assignees = bool
+      features = object({
+        due_dates = object({
+          enabled               = bool
+          start_date            = bool
+          remap_due_dates       = bool
+          remap_closed_due_date = bool
+        })
 
-  param "private" {
-    description = "Specify whether the space should be private."
-    type        = bool
+        time_tracking = object({
+          enabled = bool
+        })
+        tags = object({
+          enabled = bool
+        })
+        time_estimates = object({
+          enabled = bool
+        })
+        checklists = object({
+          enabled = bool
+        })
+        custom_fields = object({
+          enabled = bool
+        })
+        remap_dependencies = object({
+          enabled = bool
+        })
+        dependency_warning = object({
+          enabled = bool
+        })
+        portfolios = object({
+          enabled = bool
+        })
+      })
+    })
+    description = "The space to update."
   }
 
   step "http" "update_space" {
@@ -39,13 +73,8 @@ pipeline "update_space" {
     )
   }
 
-  output "response_body" {
-    value = step.http.update_space.response_body
-  }
-  output "response_headers" {
-    value = step.http.update_space.response_headers
-  }
-  output "status_code" {
-    value = step.http.update_space.status_code
+  output "space" {
+    value       = step.http.update_space.response_body
+    description = "The updated space."
   }
 }

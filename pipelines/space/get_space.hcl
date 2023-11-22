@@ -20,13 +20,8 @@ pipeline "get_space" {
     }
   }
 
-  output "response_body" {
-    value = step.http.get_space.response_body
-  }
-  output "response_headers" {
-    value = step.http.get_space.response_headers
-  }
-  output "status_code" {
-    value = step.http.get_space.status_code
+  output "space" {
+    value       = step.http.get_space.response_body
+    description = "The retrieved space."
   }
 }

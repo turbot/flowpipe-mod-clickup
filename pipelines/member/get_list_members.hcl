@@ -20,13 +20,8 @@ pipeline "get_list_members" {
     }
   }
 
-  output "response_body" {
-    value = step.http.get_list_members.response_body
-  }
-  output "response_headers" {
-    value = step.http.get_list_members.response_headers
-  }
-  output "status_code" {
-    value = step.http.get_list_members.status_code
+  output "members" {
+    value       = step.http.get_list_members.response_body.members
+    description = "The members of the list."
   }
 }

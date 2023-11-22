@@ -20,14 +20,4 @@ pipeline "delete_folder" {
       Authorization = param.api_token
     }
   }
-
-  output "response_body" {
-    value = step.http.delete_folder.response_body
-  }
-  output "response_headers" {
-    value = step.http.delete_folder.response_headers
-  }
-  output "status_code" {
-    value = step.http.delete_folder.status_code
-  }
 }

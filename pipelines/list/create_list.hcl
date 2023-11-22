@@ -41,13 +41,8 @@ pipeline "create_list" {
     )
   }
 
-  output "response_body" {
-    value = step.http.create_list.response_body
-  }
-  output "response_headers" {
-    value = step.http.create_list.response_headers
-  }
-  output "status_code" {
-    value = step.http.create_list.status_code
+  output "list" {
+    value       = step.http.create_list.response_body
+    description = "The newly created list."
   }
 }

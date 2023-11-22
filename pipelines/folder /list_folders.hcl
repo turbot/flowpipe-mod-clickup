@@ -20,13 +20,8 @@ pipeline "list_folders" {
     }
   }
 
-  output "response_body" {
-    value = step.http.list_folders.response_body
-  }
-  output "response_headers" {
-    value = step.http.list_folders.response_headers
-  }
-  output "status_code" {
-    value = step.http.list_folders.status_code
+  output "folders" {
+    value       = step.http.list_folders.response_body.folders
+    description = "The folders in the space."
   }
 }

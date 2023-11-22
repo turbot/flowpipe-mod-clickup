@@ -31,16 +31,10 @@ pipeline "create_folder" {
         name = param.name
       }
     )
-
   }
 
-  output "response_body" {
-    value = step.http.create_folder.response_body
-  }
-  output "response_headers" {
-    value = step.http.create_folder.response_headers
-  }
-  output "status_code" {
-    value = step.http.create_folder.status_code
+  output "folder" {
+    value       = step.http.create_folder.response_body
+    description = "The newly created folder."
   }
 }

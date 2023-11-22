@@ -20,13 +20,8 @@ pipeline "get_filtered_team_task" {
     }
   }
 
-  output "response_body" {
-    value = step.http.get_filtered_team_task.response_body
-  }
-  output "response_headers" {
-    value = step.http.get_filtered_team_task.response_headers
-  }
-  output "status_code" {
-    value = step.http.get_filtered_team_task.status_code
+  output "tasks" {
+    value       = step.http.get_filtered_team_task.response_body.tasks
+    description = "The tasks that meet the specified criteria."
   }
 }

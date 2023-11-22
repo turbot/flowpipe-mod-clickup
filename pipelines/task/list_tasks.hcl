@@ -20,13 +20,8 @@ pipeline "list_tasks" {
     }
   }
 
-  output "response_body" {
-    value = step.http.list_tasks.response_body
-  }
-  output "response_headers" {
-    value = step.http.list_tasks.response_headers
-  }
-  output "status_code" {
-    value = step.http.list_tasks.status_code
+  output "tasks" {
+    value       = step.http.list_tasks.response_body.tasks
+    description = "The tasks in the list."
   }
 }

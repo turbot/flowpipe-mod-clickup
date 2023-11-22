@@ -20,13 +20,8 @@ pipeline "get_folder" {
     }
   }
 
-  output "response_body" {
-    value = step.http.get_folder.response_body
-  }
-  output "response_headers" {
-    value = step.http.get_folder.response_headers
-  }
-  output "status_code" {
-    value = step.http.get_folder.status_code
+  output "folder" {
+    value       = step.http.get_folder.response_body
+    description = "The retrieved folder."
   }
 }

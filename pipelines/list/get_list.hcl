@@ -20,13 +20,8 @@ pipeline "get_list" {
     }
   }
 
-  output "response_body" {
-    value = step.http.get_list.response_body
-  }
-  output "response_headers" {
-    value = step.http.get_list.response_headers
-  }
-  output "status_code" {
-    value = step.http.get_list.status_code
+  output "list" {
+    value       = step.http.get_list.response_body
+    description = "The retrieved list."
   }
 }

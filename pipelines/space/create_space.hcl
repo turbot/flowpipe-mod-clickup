@@ -13,14 +13,45 @@ pipeline "create_space" {
     type        = number
   }
 
-  param "name" {
-    description = "The name of the space you want to create."
-    type        = string
-  }
+  param "space" {
+    type = object({
+      name               = string
+      multiple_assignees = bool
+      features = object({
+        due_dates = object({
+          enabled               = bool
+          start_date            = bool
+          remap_due_dates       = bool
+          remap_closed_due_date = bool
+        })
 
-  param "private" {
-    description = "Specify whether the space is private."
-    type        = bool
+        time_tracking = object({
+          enabled = bool
+        })
+        tags = object({
+          enabled = bool
+        })
+        time_estimates = object({
+          enabled = bool
+        })
+        checklists = object({
+          enabled = bool
+        })
+        custom_fields = object({
+          enabled = bool
+        })
+        remap_dependencies = object({
+          enabled = bool
+        })
+        dependency_warning = object({
+          enabled = bool
+        })
+        portfolios = object({
+          enabled = bool
+        })
+      })
+    })
+    description = "The space to create."
   }
 
   step "http" "create_space" {
@@ -32,21 +63,11 @@ pipeline "create_space" {
     }
 
     // Additional fields can be added here as needed
-    request_body = jsonencode(
-      {
-        name    = param.name
-        private = param.private
-      }
-    )
+    request_body = jsonencode(param.space)
   }
 
-  output "response_body" {
-    value = step.http.create_space.response_body
-  }
-  output "response_headers" {
-    value = step.http.create_space.response_headers
-  }
-  output "status_code" {
-    value = step.http.create_space.status_code
+  output "space" {
+    value       = step.http.create_space.response_body
+    description = "The newly created space."
   }
 }
