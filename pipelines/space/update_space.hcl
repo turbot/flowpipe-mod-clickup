@@ -1,25 +1,25 @@
 pipeline "update_space" {
-  title       = "Update a Space in ClickUp by ID"
-  description = "This pipeline updates a space in ClickUp by its ID using the ClickUp API."
+  title       = "Update a Space"
+  description = "Update a space."
 
   param "api_token" {
-    description = "ClickUp API token for authentication."
+    description = "The ClickUp API token."
     type        = string
     default     = var.api_token
   }
 
   param "space_id" {
-    description = "The ID of the space you want to update."
+    description = "The ID of the space to update."
     type        = number
   }
 
   param "name" {
-    description = "The updated name of the space."
+    description = "The new name of the space."
     type        = string
   }
 
   param "private" {
-    description = "Specify whether the space should be private (true) or public (false)."
+    description = "Specify whether the space should be private."
     type        = bool
   }
 

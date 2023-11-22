@@ -1,20 +1,20 @@
 pipeline "get_space" {
-  title       = "Get a Space in ClickUp by ID"
-  description = "This pipeline retrieves a space in ClickUp by its ID using the ClickUp API."
+  title       = "Get a Space"
+  description = "View the spaces available in a workspace."
 
   param "api_token" {
-    description = "ClickUp API token for authentication."
+    description = "The ClickUp API token."
     type        = string
     default     = var.api_token
   }
 
   param "space_id" {
-    description = "The ID of the space you want to retrieve."
+    description = "The ID of the space to retrieve."
     type        = number
   }
 
   step "http" "get_space" {
-    url   = "https://api.clickup.com/api/v2/space/${param.space_id}"
+    url = "https://api.clickup.com/api/v2/space/${param.space_id}"
     request_headers = {
       Authorization = param.api_token
     }

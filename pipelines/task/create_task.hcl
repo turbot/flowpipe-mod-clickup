@@ -1,20 +1,20 @@
 pipeline "create_task" {
-  title       = "Create a Task in ClickUp"
-  description = "This pipeline creates a task in ClickUp using the ClickUp API."
+  title       = "Create a Task"
+  description = "Create a new task."
 
   param "api_token" {
-    description = "ClickUp API token for authentication."
+    description = "The ClickUp API token."
     type        = string
     default     = var.api_token
   }
 
   param "list_id" {
-    description = "The ID of the list where you want to create the task."
+    description = "The ID of the list where the task will be created."
     type        = number
   }
 
   param "name" {
-    description = "The name of the task you want to create."
+    description = "The name of the task to create."
     type        = string
   }
 

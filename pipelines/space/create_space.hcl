@@ -1,15 +1,15 @@
 pipeline "create_space" {
-  title       = "Create a Space in ClickUp"
-  description = "This pipeline creates a space in ClickUp using the ClickUp API."
+  title       = "Create a Space"
+  description = "Add a new space to a workspace."
 
   param "api_token" {
-    description = "ClickUp API token for authentication."
+    description = "The ClickUp API token."
     type        = string
     default     = var.api_token
   }
 
   param "team_id" {
-    description = "The ID of the ClickUp team where you want to create the space."
+    description = "The ID of the team where the space will be created."
     type        = number
   }
 
@@ -19,7 +19,7 @@ pipeline "create_space" {
   }
 
   param "private" {
-    description = "Specify whether the space is private (true) or public (false)."
+    description = "Specify whether the space is private."
     type        = bool
   }
 

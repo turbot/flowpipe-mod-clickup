@@ -1,20 +1,20 @@
 pipeline "create_folder" {
-  title       = "Create a New Folder in a ClickUp Space"
-  description = "This pipeline creates a new folder in a ClickUp space using the ClickUp API."
+  title       = "Create a New Folder"
+  description = "Add a new folder to a space."
 
   param "api_token" {
-    description = "ClickUp API token for authentication."
+    description = "The ClickUp API token."
     type        = string
     default     = var.api_token
   }
 
   param "space_id" {
-    description = "The ID of the ClickUp space where you want to create the folder."
+    description = "The ID of the space where the new folder will be created."
     type        = number
   }
 
   param "name" {
-    description = "The name of the folder you want to create."
+    description = "The name of the folder to create."
     type        = string
   }
 

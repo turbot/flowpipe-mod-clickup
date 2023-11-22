@@ -1,20 +1,20 @@
 pipeline "update_folder" {
-  title       = "Update a Folder in ClickUp by ID"
-  description = "This pipeline updates a folder in ClickUp by its ID using the ClickUp API."
+  title       = "Update a Folder"
+  description = "Rename a folder."
 
   param "api_token" {
-    description = "ClickUp API token for authentication."
+    description = "The ClickUp API token."
     type        = string
     default     = var.api_token
   }
 
   param "folder_id" {
-    description = "The ID of the folder you want to update."
+    description = "The ID of the folder to update."
     type        = number
   }
 
   param "name" {
-    description = "New folder name."
+    description = "New name for the folder."
     type        = string
   }
 

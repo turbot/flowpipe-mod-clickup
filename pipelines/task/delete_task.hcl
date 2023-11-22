@@ -1,15 +1,15 @@
 pipeline "delete_task" {
-  title       = "Delete a Task in ClickUp by ID"
-  description = "This pipeline deletes a task in ClickUp by its ID using the ClickUp API."
+  title       = "Delete a Task"
+  description = "Delete a task from your workspace."
 
   param "api_token" {
-    description = "ClickUp API token for authentication."
+    description = "The ClickUp API token."
     type        = string
     default     = var.api_token
   }
 
   param "task_id" {
-    description = "The ID of the task you want to delete."
+    description = "The ID of the task to delete."
     type        = string
   }
 

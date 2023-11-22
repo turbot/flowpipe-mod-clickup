@@ -1,20 +1,20 @@
 pipeline "get_filtered_team_task" {
-  title       = "Get Team Tasks in ClickUp"
-  description = "This pipeline retrieves filtered team tasks in ClickUp using the ClickUp API."
+  title       = "Get Filtered Team Tasks"
+  description = "View the tasks that meet specific criteria from a workspace. Responses are limited to 100 tasks per page."
 
   param "api_token" {
-    description = "ClickUp API token for authentication."
+    description = "The ClickUp API token."
     type        = string
     default     = var.api_token
   }
 
   param "team_id" {
-    description = "The ID of the team for which you want to retrieve tasks."
+    description = "The ID of the team for which to retrieve tasks."
     type        = number
   }
 
   step "http" "get_filtered_team_task" {
-    url   = "https://api.clickup.com/api/v2/team/${param.team_id}/task"
+    url = "https://api.clickup.com/api/v2/team/${param.team_id}/task"
     request_headers = {
       Authorization = param.api_token
     }

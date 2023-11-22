@@ -1,20 +1,20 @@
 pipeline "list_lists" {
-  title       = "List All Lists in a ClickUp Folder"
-  description = "This pipeline lists all lists in a ClickUp folder using the ClickUp API."
+  title       = "Get All Lists in a Folder"
+  description = "View the lists within a folder."
 
   param "api_token" {
-    description = "ClickUp API token for authentication."
+    description = "The ClickUp API token."
     type        = string
     default     = var.api_token
   }
 
   param "folder_id" {
-    description = "The ID of the folder where you want to list lists."
+    description = "The ID of the folder to get lists."
     type        = number
   }
 
   step "http" "list_lists" {
-    url   = "https://api.clickup.com/api/v2/folder/${param.folder_id}/list"
+    url = "https://api.clickup.com/api/v2/folder/${param.folder_id}/list"
     request_headers = {
       Authorization = param.api_token
     }

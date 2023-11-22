@@ -1,25 +1,27 @@
 pipeline "update_task" {
-  title       = "Update a Task in ClickUp by ID"
-  description = "This pipeline updates a task in ClickUp by its ID using the ClickUp API."
+  title       = "Update a Task"
+  description = "Update a task."
 
   param "api_token" {
-    description = "ClickUp API token for authentication."
+    description = "The ClickUp API token."
     type        = string
     default     = var.api_token
   }
 
   param "task_id" {
-    description = "The ID of the task you want to update."
+    description = "The ID of the task to update."
     type        = string
   }
 
   param "name" {
-    description = "New task name (optional)."
+    description = "New name for the task."
+    optional    = true
     type        = string
   }
 
   param "status" {
-    description = "New task status (optional)."
+    description = "New task status."
+    optional    = true
     type        = string
   }
 

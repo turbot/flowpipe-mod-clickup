@@ -1,20 +1,20 @@
 pipeline "add_task_to_list" {
-  title       = "Add a Task to a ClickUp List"
-  description = "This pipeline adds a task to a ClickUp list using the ClickUp API."
+  title       = "Add a Task to a List"
+  description = "Add a task to an additional list."
 
   param "api_token" {
-    description = "ClickUp API token for authentication."
+    description = "The ClickUp API token."
     type        = string
     default     = var.api_token
   }
 
   param "list_id" {
-    description = "The ID of the ClickUp list where you want to add the task."
+    description = "The ID of the list to add the task to."
     type        = number
   }
 
   param "task_id" {
-    description = "The ID of the ClickUp task you want to add to the list."
+    description = "The ID of the task to add to the list."
     type        = string
   }
 

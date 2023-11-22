@@ -1,25 +1,26 @@
 pipeline "create_list" {
-  title       = "Create a List in ClickUp"
-  description = "This pipeline creates a list in ClickUp using the ClickUp API."
+  title       = "Create a List"
+  description = "Add a new list to a folder."
 
   param "api_token" {
-    description = "ClickUp API token for authentication."
+    description = "The ClickUp API token."
     type        = string
     default     = var.api_token
   }
 
   param "folder_id" {
-    description = "The ID of the folder where you want to create the list."
+    description = "The ID of the folder where the new list will be created."
     type        = number
   }
 
   param "name" {
-    description = "The name of the list you want to create."
+    description = "The name of the list to create."
     type        = string
   }
 
   param "assignee" {
-    description = "The ID of the assignee for the list (optional)."
+    description = "The ID of the user to assign this list."
+    optional    = true
     type        = number
   }
 

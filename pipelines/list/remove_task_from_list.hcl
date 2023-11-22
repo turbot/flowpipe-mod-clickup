@@ -1,20 +1,20 @@
 pipeline "remove_task_from_list" {
-  title       = "Remove a Task from a ClickUp List"
-  description = "This pipeline removes a task from a ClickUp list using the ClickUp API."
+  title       = "Remove a Task from a List"
+  description = "Remove a task from an additional list."
 
   param "api_token" {
-    description = "ClickUp API token for authentication."
+    description = "The ClickUp API token."
     type        = string
     default     = var.api_token
   }
 
   param "list_id" {
-    description = "The ID of the ClickUp list from which you want to remove the task."
+    description = "The ID of the list from where to remove the task."
     type        = number
   }
 
   param "task_id" {
-    description = "The ID of the ClickUp task you want to remove from the list."
+    description = "The ID of the task to remove from the list."
     type        = string
   }
 
