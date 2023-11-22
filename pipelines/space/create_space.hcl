@@ -1,5 +1,5 @@
 pipeline "create_space" {
-  title       = "Create a Space"
+  title       = "Create Space"
   description = "Add a new space to a workspace."
 
   param "api_token" {

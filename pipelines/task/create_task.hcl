@@ -1,5 +1,5 @@
 pipeline "create_task" {
-  title       = "Create a Task"
+  title       = "Create Task"
   description = "Create a new task."
 
   param "api_token" {

@@ -1,5 +1,5 @@
 pipeline "list_lists" {
-  title       = "Get All Lists in a Folder"
+  title       = "Get Lists"
   description = "View the lists within a folder."
 
   param "api_token" {

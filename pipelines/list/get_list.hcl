@@ -1,5 +1,5 @@
 pipeline "get_list" {
-  title       = "Get a List"
+  title       = "Get List"
   description = "View information about a list."
 
   param "api_token" {

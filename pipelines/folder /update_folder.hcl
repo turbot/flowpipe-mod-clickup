@@ -1,5 +1,5 @@
 pipeline "update_folder" {
-  title       = "Update a Folder"
+  title       = "Update Folder"
   description = "Rename a folder."
 
   param "api_token" {

@@ -1,5 +1,5 @@
 pipeline "get_space" {
-  title       = "Get a Space"
+  title       = "Get Space"
   description = "View the spaces available in a workspace."
 
   param "api_token" {

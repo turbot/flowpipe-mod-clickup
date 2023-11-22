@@ -1,5 +1,5 @@
 pipeline "update_space" {
-  title       = "Update a Space"
+  title       = "Update Space"
   description = "Update a space."
 
   param "api_token" {

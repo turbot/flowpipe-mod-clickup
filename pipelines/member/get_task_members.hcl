@@ -1,5 +1,5 @@
 pipeline "get_task_members" {
-  title       = "Get Members of a Task"
+  title       = "Get Task Members"
   description = "View the people who have access to a task."
 
   param "api_token" {

@@ -1,5 +1,5 @@
 pipeline "delete_task" {
-  title       = "Delete a Task"
+  title       = "Delete Task"
   description = "Delete a task from your workspace."
 
   param "api_token" {

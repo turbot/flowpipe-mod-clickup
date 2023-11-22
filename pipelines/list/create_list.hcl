@@ -1,5 +1,5 @@
 pipeline "create_list" {
-  title       = "Create a List"
+  title       = "Create List"
   description = "Add a new list to a folder."
 
   param "api_token" {

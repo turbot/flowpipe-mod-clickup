@@ -1,5 +1,5 @@
 pipeline "remove_task_from_list" {
-  title       = "Remove a Task from a List"
+  title       = "Remove Task From List"
   description = "Remove a task from an additional list."
 
   param "api_token" {

@@ -1,5 +1,5 @@
 pipeline "list_tasks" {
-  title       = "List all Tasks"
+  title       = "List Tasks"
   description = "View the tasks in a list."
 
   param "api_token" {

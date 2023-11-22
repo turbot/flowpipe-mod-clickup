@@ -1,5 +1,5 @@
 pipeline "update_task" {
-  title       = "Update a Task"
+  title       = "Update Task"
   description = "Update a task."
 
   param "api_token" {

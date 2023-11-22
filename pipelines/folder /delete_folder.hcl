@@ -1,5 +1,5 @@
 pipeline "delete_folder" {
-  title       = "Delete a Folder"
+  title       = "Delete Folder"
   description = "Delete a folder from your workspace."
 
   param "api_token" {

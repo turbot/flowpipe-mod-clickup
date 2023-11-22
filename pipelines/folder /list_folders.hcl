@@ -1,5 +1,5 @@
 pipeline "list_folders" {
-  title       = "List all Folders"
+  title       = "List Folders"
   description = "View the folders in a space."
 
   param "api_token" {

@@ -1,5 +1,5 @@
 pipeline "get_list_members" {
-  title       = "Get Members of a List"
+  title       = "Get List Members"
   description = "View the people who have access to a list."
 
   param "api_token" {

@@ -1,5 +1,5 @@
 pipeline "list_spaces" {
-  title       = "List All Spaces"
+  title       = "List Spaces"
   description = "View the spaces avialable in a workspace."
 
   param "api_token" {

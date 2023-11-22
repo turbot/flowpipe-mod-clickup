@@ -1,5 +1,5 @@
 pipeline "delete_space" {
-  title       = "Delete a Space"
+  title       = "Delete Space"
   description = "Delete a space from your workspace."
 
   param "api_token" {

@@ -1,5 +1,5 @@
 pipeline "create_folder" {
-  title       = "Create a New Folder"
+  title       = "Create New Folder"
   description = "Add a new folder to a space."
 
   param "api_token" {

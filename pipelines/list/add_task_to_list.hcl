@@ -1,5 +1,5 @@
 pipeline "add_task_to_list" {
-  title       = "Add a Task to a List"
+  title       = "Add Task To List"
   description = "Add a task to an additional list."
 
   param "api_token" {
