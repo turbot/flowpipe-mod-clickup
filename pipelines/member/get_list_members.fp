@@ -1,6 +1,6 @@
 pipeline "get_list_members" {
   title       = "Get List Members"
-  description = "View the people who have access to a list."
+  description = "View the people who have access to a List."
 
   param "api_token" {
     description = "The ClickUp API token."

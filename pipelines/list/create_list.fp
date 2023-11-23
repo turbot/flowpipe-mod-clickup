@@ -1,6 +1,6 @@
 pipeline "create_list" {
   title       = "Create List"
-  description = "Add a new list to a folder."
+  description = "Add a new List to a Folder."
 
   param "api_token" {
     description = "The ClickUp API token."

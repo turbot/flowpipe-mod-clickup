@@ -1,6 +1,6 @@
 pipeline "get_folder" {
   title       = "Get Folder"
-  description = "View the lists within a folder."
+  description = "View the Lists within a Folder."
 
   param "api_token" {
     description = "The ClickUp API token."

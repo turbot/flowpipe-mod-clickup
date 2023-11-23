@@ -1,6 +1,6 @@
 pipeline "delete_task" {
   title       = "Delete Task"
-  description = "Delete a task from your workspace."
+  description = "Delete a task from your Workspace."
 
   param "api_token" {
     description = "The ClickUp API token."

@@ -1,6 +1,6 @@
-pipeline "create_space" {
-  title       = "Create Space"
-  description = "Add a new space to a workspace."
+pipeline "update_space" {
+  title       = "Update Space"
+  description = "Update a Space."
 
   param "api_token" {
     description = "The ClickUp API token."
@@ -8,14 +8,17 @@ pipeline "create_space" {
     default     = var.api_token
   }
 
-  param "team_id" {
-    description = "The ID of the team where the space will be created."
+  param "space_id" {
+    description = "The ID of the space to update."
     type        = number
   }
 
   param "space" {
     type = object({
       name               = string
+      color              = string
+      private            = bool
+      admin_can_manage   = bool
       multiple_assignees = bool
       features = object({
         due_dates = object({
@@ -51,23 +54,27 @@ pipeline "create_space" {
         })
       })
     })
-    description = "The space to create."
+    description = "The space to update."
   }
 
-  step "http" "create_space" {
-    method = "post"
-    url    = "https://api.clickup.com/api/v2/team/${param.team_id}/space"
+  step "http" "update_space" {
+    method = "put"
+    url    = "https://api.clickup.com/api/v2/space/${param.space_id}"
     request_headers = {
       Content-Type  = "application/json"
       Authorization = param.api_token
     }
 
-    // Additional fields can be added here as needed
-    request_body = jsonencode(param.space)
+    request_body = jsonencode(
+      {
+        name    = param.name
+        private = param.private
+      }
+    )
   }
 
   output "space" {
-    value       = step.http.create_space.response_body
-    description = "The newly created space."
+    value       = step.http.update_space.response_body
+    description = "The updated space."
   }
 }

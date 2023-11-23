@@ -1,6 +1,6 @@
 pipeline "remove_task_from_list" {
   title       = "Remove Task From List"
-  description = "Remove a task from an additional list."
+  description = "Remove a task from an additional List."
 
   param "api_token" {
     description = "The ClickUp API token."

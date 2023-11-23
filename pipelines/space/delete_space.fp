@@ -1,6 +1,6 @@
 pipeline "delete_space" {
   title       = "Delete Space"
-  description = "Delete a space from your workspace."
+  description = "Delete a Space from your Workspace."
 
   param "api_token" {
     description = "The ClickUp API token."

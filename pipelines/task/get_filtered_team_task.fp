@@ -1,6 +1,6 @@
 pipeline "get_filtered_team_task" {
   title       = "Get Filtered Team Tasks"
-  description = "View the tasks that meet specific criteria from a workspace. Responses are limited to 100 tasks per page."
+  description = "View the tasks that meet specific criteria from a Workspace. Responses are limited to 100 tasks per page."
 
   param "api_token" {
     description = "The ClickUp API token."

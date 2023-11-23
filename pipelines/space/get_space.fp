@@ -1,6 +1,6 @@
 pipeline "get_space" {
   title       = "Get Space"
-  description = "View the spaces available in a workspace."
+  description = "View the Spaces available in a Workspace."
 
   param "api_token" {
     description = "The ClickUp API token."

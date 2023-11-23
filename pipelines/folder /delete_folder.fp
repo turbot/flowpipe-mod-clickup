@@ -1,6 +1,6 @@
 pipeline "delete_folder" {
   title       = "Delete Folder"
-  description = "Delete a folder from your workspace."
+  description = "Delete a Folder from your Workspace."
 
   param "api_token" {
     description = "The ClickUp API token."

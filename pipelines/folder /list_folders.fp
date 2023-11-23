@@ -1,6 +1,6 @@
 pipeline "list_folders" {
   title       = "List Folders"
-  description = "View the folders in a space."
+  description = "View the Folders in a Space."
 
   param "api_token" {
     description = "The ClickUp API token."

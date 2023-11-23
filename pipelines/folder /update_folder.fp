@@ -1,6 +1,6 @@
 pipeline "update_folder" {
   title       = "Update Folder"
-  description = "Rename a folder."
+  description = "Rename a Folder."
 
   param "api_token" {
     description = "The ClickUp API token."

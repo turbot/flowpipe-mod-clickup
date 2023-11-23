@@ -1,6 +1,6 @@
 pipeline "get_task_members" {
   title       = "Get Task Members"
-  description = "View the people who have access to a task."
+  description = "View the people who have access to a Task."
 
   param "api_token" {
     description = "The ClickUp API token."

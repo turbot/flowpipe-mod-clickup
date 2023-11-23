@@ -1,6 +1,6 @@
 pipeline "list_tasks" {
   title       = "List Tasks"
-  description = "View the tasks in a list."
+  description = "View the tasks in a List."
 
   param "api_token" {
     description = "The ClickUp API token."
