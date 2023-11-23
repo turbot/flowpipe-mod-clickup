@@ -6,6 +6,8 @@ A collection of [Flowpipe](https://flowpipe.io) pipelines that can be used to:
 - List Spaces
 - And more!
 
+<!-- ![image](https://github.com/turbot/flowpipe-mod-clickup/blob/main/docs/images/flowpipe_test_run.png?raw=true) -->
+
 ## Documentation
 
 - **[Pipelines →](https://hub.flowpipe.io/mods/turbot/clickup/pipelines)**
