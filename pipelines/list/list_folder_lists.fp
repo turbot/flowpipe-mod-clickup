@@ -1,4 +1,4 @@
-pipeline "list_lists" {
+pipeline "list_folder_lists" {
   title       = "Get Lists"
   description = "View the Lists within a Folder."
 
@@ -13,7 +13,7 @@ pipeline "list_lists" {
     type        = number
   }
 
-  step "http" "list_lists" {
+  step "http" "list_folder_lists" {
     url = "https://api.clickup.com/api/v2/folder/${param.folder_id}/list"
     request_headers = {
       Authorization = param.api_token
@@ -21,7 +21,7 @@ pipeline "list_lists" {
   }
 
   output "lists" {
-    value       = step.http.list_lists.response_body.lists
+    value       = step.http.list_folder_lists.response_body.lists
     description = "The lists within the folder."
   }
 }
