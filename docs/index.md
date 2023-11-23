@@ -45,7 +45,7 @@ It's recommended to configure credentials through [input variables](https://flow
 
 **Note:** Credentials can also be passed in each pipeline run with `--arg api_token=YourAPIToken`.
 
-Additional input variables may be defined in the mod's `variables.hcl` file that can be configured to better match your environment and requirements.
+Additional input variables may be defined in the mod's `variables.fp` file that can be configured to better match your environment and requirements.
 
 Variables with defaults set do not need to be explicitly set, but it may be helpful to override them.
 
