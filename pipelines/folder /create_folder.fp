@@ -3,7 +3,7 @@ pipeline "create_folder" {
   description = "Add a new Folder to a Space."
 
   param "api_token" {
-    description = "The ClickUp API token."
+    description = local.api_token_param_description
     type        = string
     default     = var.api_token
   }

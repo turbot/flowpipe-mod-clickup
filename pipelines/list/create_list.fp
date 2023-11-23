@@ -3,7 +3,7 @@ pipeline "create_list" {
   description = "Add a new List to a Folder."
 
   param "api_token" {
-    description = "The ClickUp API token."
+    description = local.api_token_param_description
     type        = string
     default     = var.api_token
   }

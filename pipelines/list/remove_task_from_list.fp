@@ -3,7 +3,7 @@ pipeline "remove_task_from_list" {
   description = "Remove a task from an additional List."
 
   param "api_token" {
-    description = "The ClickUp API token."
+    description = local.api_token_param_description
     type        = string
     default     = var.api_token
   }

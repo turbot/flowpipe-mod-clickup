@@ -3,7 +3,7 @@ pipeline "get_task" {
   description = "View information about a task."
 
   param "api_token" {
-    description = "The ClickUp API token."
+    description = local.api_token_param_description
     type        = string
     default     = var.api_token
   }

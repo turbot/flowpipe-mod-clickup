@@ -3,7 +3,7 @@ pipeline "get_list_members" {
   description = "View the people who have access to a List."
 
   param "api_token" {
-    description = "The ClickUp API token."
+    description = local.api_token_param_description
     type        = string
     default     = var.api_token
   }

@@ -3,7 +3,7 @@ pipeline "add_task_to_list" {
   description = "Add a task to an additional List."
 
   param "api_token" {
-    description = "The ClickUp API token."
+    description = local.api_token_param_description
     type        = string
     default     = var.api_token
   }
