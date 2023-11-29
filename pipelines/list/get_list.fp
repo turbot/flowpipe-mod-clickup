@@ -3,14 +3,14 @@ pipeline "get_list" {
   description = "View information about a List."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "list_id" {
-    description = "The ID of the list to retrieve."
     type        = number
+    description = "The ID of the list to retrieve."
   }
 
   step "http" "get_list" {
@@ -21,7 +21,7 @@ pipeline "get_list" {
   }
 
   output "list" {
-    value       = step.http.get_list.response_body
     description = "The retrieved list."
+    value       = step.http.get_list.response_body
   }
 }

@@ -3,14 +3,14 @@ pipeline "get_folder" {
   description = "View the Lists within a Folder."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "folder_id" {
-    description = "The ID of the folder to retrieve."
     type        = number
+    description = "The ID of the folder to retrieve."
   }
 
   step "http" "get_folder" {
@@ -21,7 +21,7 @@ pipeline "get_folder" {
   }
 
   output "folder" {
-    value       = step.http.get_folder.response_body
     description = "The retrieved folder."
+    value       = step.http.get_folder.response_body
   }
 }

@@ -3,14 +3,14 @@ pipeline "get_space" {
   description = "View the Spaces available in a Workspace."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "space_id" {
-    description = "The ID of the space to retrieve."
     type        = number
+    description = "The ID of the space to retrieve."
   }
 
   step "http" "get_space" {
@@ -21,7 +21,7 @@ pipeline "get_space" {
   }
 
   output "space" {
-    value       = step.http.get_space.response_body
     description = "The retrieved space."
+    value       = step.http.get_space.response_body
   }
 }

@@ -3,14 +3,14 @@ pipeline "delete_list" {
   description = "Delete a List from your Workspace."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "list_id" {
-    description = "The ID of the list to delete."
     type        = number
+    description = "The ID of the list to delete."
   }
 
   step "http" "delete_list" {

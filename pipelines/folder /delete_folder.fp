@@ -3,14 +3,14 @@ pipeline "delete_folder" {
   description = "Delete a Folder from your Workspace."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "folder_id" {
-    description = "The ID of the folder to delete."
     type        = number
+    description = "The ID of the folder to delete."
   }
 
   step "http" "delete_folder" {

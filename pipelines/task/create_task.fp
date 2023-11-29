@@ -3,24 +3,24 @@ pipeline "create_task" {
   description = "Create a new task."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "list_id" {
-    description = "The ID of the list where the task will be created."
     type        = number
+    description = "The ID of the list where the task will be created."
   }
 
   param "name" {
-    description = "The name of the task to create."
     type        = string
+    description = "The name of the task to create."
   }
 
   param "description" {
-    description = "The description of the task."
     type        = string
+    description = "The description of the task."
   }
 
   step "http" "create_task" {
@@ -40,7 +40,7 @@ pipeline "create_task" {
   }
 
   output "task" {
-    value       = step.http.create_task.response_body
     description = "The created task."
+    value       = step.http.create_task.response_body
   }
 }

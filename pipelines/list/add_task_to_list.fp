@@ -3,19 +3,19 @@ pipeline "add_task_to_list" {
   description = "Add a task to an additional List."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "list_id" {
-    description = "The ID of the list to add the task to."
     type        = number
+    description = "The ID of the list to add the task to."
   }
 
   param "task_id" {
-    description = "The ID of the task to add to the list."
     type        = string
+    description = "The ID of the task to add to the list."
   }
 
   step "http" "add_task_to_list" {

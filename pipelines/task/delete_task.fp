@@ -3,14 +3,14 @@ pipeline "delete_task" {
   description = "Delete a task from your Workspace."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "task_id" {
-    description = "The ID of the task to delete."
     type        = string
+    description = "The ID of the task to delete."
   }
 
   step "http" "delete_task" {

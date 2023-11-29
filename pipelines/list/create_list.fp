@@ -3,24 +3,24 @@ pipeline "create_list" {
   description = "Add a new List to a Folder."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "folder_id" {
-    description = "The ID of the folder where the new list will be created."
     type        = number
+    description = "The ID of the folder where the new list will be created."
   }
 
   param "name" {
-    description = "The name of the list to create."
     type        = string
+    description = "The name of the list to create."
   }
 
   param "assignee" {
-    description = "The ID of the user to assign this list."
     optional    = true
+    description = "The ID of the user to assign this list."
     type        = number
   }
 
@@ -42,7 +42,7 @@ pipeline "create_list" {
   }
 
   output "list" {
-    value       = step.http.create_list.response_body
     description = "The newly created list."
+    value       = step.http.create_list.response_body
   }
 }

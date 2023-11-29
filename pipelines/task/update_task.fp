@@ -3,24 +3,24 @@ pipeline "update_task" {
   description = "Update a task."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "task_id" {
-    description = "The ID of the task to update."
     type        = string
+    description = "The ID of the task to update."
   }
 
   param "name" {
-    description = "New name for the task."
     type        = string
+    description = "New name for the task."
   }
 
   param "status" {
-    description = "New task status."
     type        = string
+    description = "New task status."
   }
 
   step "http" "update_task" {
@@ -40,7 +40,7 @@ pipeline "update_task" {
   }
 
   output "task" {
-    value       = step.http.update_task.response_body
     description = "The updated task."
+    value       = step.http.update_task.response_body
   }
 }

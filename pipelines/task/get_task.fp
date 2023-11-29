@@ -3,14 +3,14 @@ pipeline "get_task" {
   description = "View information about a task."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "task_id" {
-    description = "The ID of the task to retrieve."
     type        = string
+    description = "The ID of the task to retrieve."
   }
 
   step "http" "get_task" {
@@ -21,7 +21,7 @@ pipeline "get_task" {
   }
 
   output "task" {
-    value       = step.http.get_task.response_body
     description = "The retrieved task."
+    value       = step.http.get_task.response_body
   }
 }

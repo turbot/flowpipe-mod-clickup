@@ -3,14 +3,14 @@ pipeline "list_tasks" {
   description = "View the tasks in a List."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "list_id" {
-    description = "The ID of the list for which to list tasks."
     type        = number
+    description = "The ID of the list for which to list tasks."
   }
 
   step "http" "list_tasks" {
@@ -21,7 +21,7 @@ pipeline "list_tasks" {
   }
 
   output "tasks" {
-    value       = step.http.list_tasks.response_body.tasks
     description = "The tasks in the list."
+    value       = step.http.list_tasks.response_body.tasks
   }
 }

@@ -3,14 +3,14 @@ pipeline "list_spaces" {
   description = "View the Spaces available in a Workspace."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "team_id" {
-    description = "The ID of the team for which to list spaces."
     type        = string
+    description = "The ID of the team for which to list spaces."
   }
 
   step "http" "list_spaces" {
@@ -21,7 +21,7 @@ pipeline "list_spaces" {
   }
 
   output "spaces" {
-    value       = step.http.list_spaces.response_body.spaces
     description = "The list of spaces."
+    value       = step.http.list_spaces.response_body.spaces
   }
 }

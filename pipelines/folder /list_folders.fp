@@ -3,14 +3,14 @@ pipeline "list_folders" {
   description = "View the Folders in a Space."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "space_id" {
-    description = "The ID of the space to list folders."
     type        = number
+    description = "The ID of the space to list folders."
   }
 
   step "http" "list_folders" {
@@ -21,7 +21,7 @@ pipeline "list_folders" {
   }
 
   output "folders" {
-    value       = step.http.list_folders.response_body.folders
     description = "The folders in the space."
+    value       = step.http.list_folders.response_body.folders
   }
 }

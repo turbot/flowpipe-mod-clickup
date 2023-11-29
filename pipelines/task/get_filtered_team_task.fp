@@ -3,14 +3,14 @@ pipeline "get_filtered_team_task" {
   description = "View the tasks that meet specific criteria from a Workspace. Responses are limited to 100 tasks per page."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "team_id" {
-    description = "The ID of the team for which to retrieve tasks."
     type        = number
+    description = "The ID of the team for which to retrieve tasks."
   }
 
   step "http" "get_filtered_team_task" {
@@ -21,7 +21,7 @@ pipeline "get_filtered_team_task" {
   }
 
   output "tasks" {
-    value       = step.http.get_filtered_team_task.response_body.tasks
     description = "The tasks that meet the specified criteria."
+    value       = step.http.get_filtered_team_task.response_body.tasks
   }
 }

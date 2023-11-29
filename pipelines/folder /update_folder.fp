@@ -3,19 +3,19 @@ pipeline "update_folder" {
   description = "Rename a Folder."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "folder_id" {
-    description = "The ID of the folder to update."
     type        = number
+    description = "The ID of the folder to update."
   }
 
   param "name" {
-    description = "New name for the folder."
     type        = string
+    description = "New name for the folder."
   }
 
   step "http" "update_folder" {
@@ -34,7 +34,7 @@ pipeline "update_folder" {
   }
 
   output "folder" {
-    value       = step.http.update_folder.response_body
     description = "The updated folder."
+    value       = step.http.update_folder.response_body
   }
 }

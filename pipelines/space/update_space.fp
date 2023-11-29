@@ -3,14 +3,14 @@ pipeline "update_space" {
   description = "Update a Space."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "space_id" {
-    description = "The ID of the space to update."
     type        = number
+    description = "The ID of the space to update."
   }
 
   param "space" {
@@ -74,7 +74,7 @@ pipeline "update_space" {
   }
 
   output "space" {
-    value       = step.http.update_space.response_body
     description = "The updated space."
+    value       = step.http.update_space.response_body
   }
 }

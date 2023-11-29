@@ -3,19 +3,19 @@ pipeline "create_folder" {
   description = "Add a new Folder to a Space."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "space_id" {
-    description = "The ID of the space where the new folder will be created."
     type        = number
+    description = "The ID of the space where the new folder will be created."
   }
 
   param "name" {
-    description = "The name of the folder to create."
     type        = string
+    description = "The name of the folder to create."
   }
 
   step "http" "create_folder" {
@@ -34,7 +34,7 @@ pipeline "create_folder" {
   }
 
   output "folder" {
-    value       = step.http.create_folder.response_body
     description = "The newly created folder."
+    value       = step.http.create_folder.response_body
   }
 }

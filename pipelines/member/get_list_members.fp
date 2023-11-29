@@ -3,14 +3,14 @@ pipeline "get_list_members" {
   description = "View the people who have access to a List."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "list_id" {
-    description = "The ID of the list to view members."
     type        = number
+    description = "The ID of the list to view members."
   }
 
   step "http" "get_list_members" {
@@ -21,7 +21,7 @@ pipeline "get_list_members" {
   }
 
   output "members" {
-    value       = step.http.get_list_members.response_body.members
     description = "The members of the list."
+    value       = step.http.get_list_members.response_body.members
   }
 }

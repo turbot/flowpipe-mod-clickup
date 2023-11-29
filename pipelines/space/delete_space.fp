@@ -3,14 +3,14 @@ pipeline "delete_space" {
   description = "Delete a Space from your Workspace."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "space_id" {
-    description = "The ID of the space to delete."
     type        = string
+    description = "The ID of the space to delete."
   }
 
   step "http" "delete_space" {

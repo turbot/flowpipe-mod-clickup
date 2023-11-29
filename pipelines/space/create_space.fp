@@ -3,14 +3,14 @@ pipeline "create_space" {
   description = "Add a new Space to a Workspace."
 
   param "api_token" {
-    description = local.api_token_param_description
     type        = string
+    description = local.api_token_param_description
     default     = var.api_token
   }
 
   param "team_id" {
-    description = "The ID of the team where the space will be created."
     type        = number
+    description = "The ID of the team where the space will be created."
   }
 
   param "space" {
@@ -67,7 +67,7 @@ pipeline "create_space" {
   }
 
   output "space" {
-    value       = step.http.create_space.response_body
     description = "The newly created space."
+    value       = step.http.create_space.response_body
   }
 }
