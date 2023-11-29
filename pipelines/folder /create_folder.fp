@@ -20,7 +20,7 @@ pipeline "create_folder" {
 
   step "http" "create_folder" {
     method = "post"
-    url    = "https://api.clickup.com/api/v2/space/${param.space_id}/folder"
+    url    = "${local.clickup_api_endpoint}/space/${param.space_id}/folder"
     request_headers = {
       Content-Type  = "application/json"
       Authorization = param.api_token

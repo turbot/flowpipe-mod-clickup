@@ -14,7 +14,7 @@ pipeline "list_tasks" {
   }
 
   step "http" "list_tasks" {
-    url = "https://api.clickup.com/api/v2/task/${param.list_id}"
+    url = "${local.clickup_api_endpoint}/task/${param.list_id}"
     request_headers = {
       Authorization = param.api_token
     }

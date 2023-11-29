@@ -14,7 +14,7 @@ pipeline "list_spaces" {
   }
 
   step "http" "list_spaces" {
-    url = "https://api.clickup.com/api/v2/team/${param.team_id}/space"
+    url = "${local.clickup_api_endpoint}/team/${param.team_id}/space"
     request_headers = {
       Authorization = param.api_token
     }

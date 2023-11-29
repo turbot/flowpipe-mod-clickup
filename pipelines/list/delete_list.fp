@@ -15,7 +15,7 @@ pipeline "delete_list" {
 
   step "http" "delete_list" {
     method = "delete"
-    url    = "https://api.clickup.com/api/v2/list/${param.list_id}"
+    url    = "${local.clickup_api_endpoint}/list/${param.list_id}"
     request_headers = {
       Content-Type  = "application/json"
       Authorization = param.api_token

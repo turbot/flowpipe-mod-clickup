@@ -59,7 +59,7 @@ pipeline "update_space" {
 
   step "http" "update_space" {
     method = "put"
-    url    = "https://api.clickup.com/api/v2/space/${param.space_id}"
+    url    = "${local.clickup_api_endpoint}/space/${param.space_id}"
     request_headers = {
       Content-Type  = "application/json"
       Authorization = param.api_token

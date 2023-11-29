@@ -20,7 +20,7 @@ pipeline "add_task_to_list" {
 
   step "http" "add_task_to_list" {
     method = "post"
-    url    = "https://api.clickup.com/api/v2/list/${param.list_id}/task/${param.task_id}"
+    url    = "${local.clickup_api_endpoint}/list/${param.list_id}/task/${param.task_id}"
     request_headers = {
       Authorization = param.api_token
     }

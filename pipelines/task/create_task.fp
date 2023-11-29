@@ -25,7 +25,7 @@ pipeline "create_task" {
 
   step "http" "create_task" {
     method = "post"
-    url    = "https://api.clickup.com/api/v2/list/${param.list_id}/task"
+    url    = "${local.clickup_api_endpoint}/list/${param.list_id}/task"
     request_headers = {
       Content-Type  = "application/json"
       Authorization = param.api_token

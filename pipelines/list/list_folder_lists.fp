@@ -14,7 +14,7 @@ pipeline "list_folder_lists" {
   }
 
   step "http" "list_folder_lists" {
-    url = "https://api.clickup.com/api/v2/folder/${param.folder_id}/list"
+    url = "${local.clickup_api_endpoint}/folder/${param.folder_id}/list"
     request_headers = {
       Authorization = param.api_token
     }

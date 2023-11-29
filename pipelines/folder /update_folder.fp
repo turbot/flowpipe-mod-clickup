@@ -20,7 +20,7 @@ pipeline "update_folder" {
 
   step "http" "update_folder" {
     method = "put"
-    url    = "https://api.clickup.com/api/v2/folder/${param.folder_id}"
+    url    = "${local.clickup_api_endpoint}/folder/${param.folder_id}"
     request_headers = {
       Content-Type  = "application/json"
       Authorization = param.api_token

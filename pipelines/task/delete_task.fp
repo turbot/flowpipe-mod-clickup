@@ -14,7 +14,7 @@ pipeline "delete_task" {
   }
 
   step "http" "delete_task" {
-    url    = "https://api.clickup.com/api/v2/task/${param.task_id}"
+    url    = "${local.clickup_api_endpoint}/task/${param.task_id}"
     method = "delete"
     request_headers = {
       Content-Type  = "application/json"

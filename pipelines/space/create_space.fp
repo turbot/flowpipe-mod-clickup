@@ -56,7 +56,7 @@ pipeline "create_space" {
 
   step "http" "create_space" {
     method = "post"
-    url    = "https://api.clickup.com/api/v2/team/${param.team_id}/space"
+    url    = "${local.clickup_api_endpoint}/team/${param.team_id}/space"
     request_headers = {
       Content-Type  = "application/json"
       Authorization = param.api_token

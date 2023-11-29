@@ -1,5 +1,5 @@
 mod "clickup" {
-  title         = "ClickUp Library"
+  title         = "ClickUp"
   description   = "Run pipelines to supercharge your ClickUp workflows using Flowpipe."
   color         = "#7B68EE"
   documentation = file("./docs/index.md")
@@ -7,7 +7,7 @@ mod "clickup" {
   categories    = ["clickup", "library"]
 
   opengraph {
-    title       = "ClickUp Library Mod for Flowpipe"
+    title       = "ClickUp"
     description = "Run pipelines to supercharge your ClickUp workflows using Flowpipe."
     image       = "/images/flowpipe/mods/turbot/clickup-social-graphic.png"
   }

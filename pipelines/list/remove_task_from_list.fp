@@ -20,7 +20,7 @@ pipeline "remove_task_from_list" {
 
   step "http" "remove_task_from_list" {
     method = "delete"
-    url    = "https://api.clickup.com/api/v2/list/${param.list_id}/task/${param.task_id}"
+    url    = "${local.clickup_api_endpoint}/list/${param.list_id}/task/${param.task_id}"
     request_headers = {
       Authorization = param.api_token
     }
