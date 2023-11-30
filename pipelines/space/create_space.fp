@@ -62,7 +62,7 @@ pipeline "create_space" {
       Authorization = param.api_token
     }
 
-    // Additional fields can be added here as needed
+    # Additional fields can be added here as needed
     request_body = jsonencode(param.space)
   }
 

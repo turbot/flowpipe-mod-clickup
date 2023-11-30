@@ -32,7 +32,7 @@ pipeline "create_list" {
       Authorization = param.api_token
     }
 
-    // We can add more fields here as per requirements
+    # We can add more fields here as per requirements
     request_body = jsonencode(
       {
         name     = param.name
