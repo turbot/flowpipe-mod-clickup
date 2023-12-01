@@ -13,45 +13,93 @@ pipeline "create_space" {
     description = "The ID of the team where the space will be created."
   }
 
-  param "space" {
-    type = object({
-      name               = string
-      multiple_assignees = bool
-      features = object({
-        due_dates = object({
-          enabled               = bool
-          start_date            = bool
-          remap_due_dates       = bool
-          remap_closed_due_date = bool
-        })
+  param "name" {
+    type        = string
+    description = "The name of the space you want to create."
+  }
 
-        time_tracking = object({
-          enabled = bool
-        })
-        tags = object({
-          enabled = bool
-        })
-        time_estimates = object({
-          enabled = bool
-        })
-        checklists = object({
-          enabled = bool
-        })
-        custom_fields = object({
-          enabled = bool
-        })
-        remap_dependencies = object({
-          enabled = bool
-        })
-        dependency_warning = object({
-          enabled = bool
-        })
-        portfolios = object({
-          enabled = bool
-        })
-      })
-    })
-    description = "The space to create."
+  param "private" {
+    type        = bool
+    description = "Whether or not the space should be private."
+    default     = false
+  }
+
+  param "multiple_assignees" {
+    type        = bool
+    description = "Whether or not tasks in this space can have multiple assignees."
+    default     = true
+  }
+
+  param "due_dates" {
+    type        = bool
+    description = "Whether or not due dates are enabled for this space."
+    default     = true
+  }
+
+  param "start_date" {
+    type        = bool
+    description = "Whether or not start dates are enabled for this space."
+    default     = false
+  }
+
+  param "remap_due_dates" {
+    type        = bool
+    description = "Whether or not due dates should be remapped when moving tasks between lists."
+    default     = true
+  }
+
+  param "remap_closed_due_date" {
+    type        = bool
+    description = "Whether or not due dates should be remapped when closing tasks."
+    default     = false
+  }
+
+  param "time_tracking" {
+    type        = bool
+    description = "Whether or not time tracking is enabled for this space."
+    default     = false
+  }
+
+  param "tags" {
+    type        = bool
+    description = "Whether or not tags are enabled for this space."
+    default     = true
+  }
+
+  param "time_estimates" {
+    type        = bool
+    description = "Whether or not time estimates are enabled for this space."
+    default     = true
+  }
+
+  param "checklists" {
+    type        = bool
+    description = "Whether or not checklists are enabled for this space."
+    default     = true
+  }
+
+  param "custom_fields" {
+    type        = bool
+    description = "Whether or not custom fields are enabled for this space."
+    default     = true
+  }
+
+  param "remap_dependencies" {
+    type        = bool
+    description = "Whether or not dependencies should be remapped when moving tasks between lists."
+    default     = true
+  }
+
+  param "dependency_warning" {
+    type        = bool
+    description = "Whether or not a warning should be displayed when a task is dependent on another task."
+    default     = true
+  }
+
+  param "portfolios" {
+    type        = bool
+    description = "Whether or not portfolios are enabled for this space."
+    default     = true
   }
 
   step "http" "create_space" {
@@ -62,8 +110,46 @@ pipeline "create_space" {
       Authorization = param.api_token
     }
 
-    # Additional fields can be added here as needed
-    request_body = jsonencode(param.space)
+    request_body = jsonencode(
+      {
+        name               = param.name
+        multiple_assignees = param.multiple_assignees
+        private            = param.private
+        features = {
+          due_dates = {
+            enabled               = param.due_dates
+            start_date            = param.start_date
+            remap_due_dates       = param.remap_due_dates
+            remap_closed_due_date = param.remap_closed_due_date
+          }
+
+          time_tracking = {
+            enabled = param.time_tracking
+          }
+          tags = {
+            enabled = param.tags
+          }
+          time_estimates = {
+            enabled = param.time_estimates
+          }
+          checklists = {
+            enabled = param.checklists
+          }
+          custom_fields = {
+            enabled = param.custom_fields
+          }
+          remap_dependencies = {
+            enabled = param.remap_dependencies
+          }
+          dependency_warning = {
+            enabled = param.dependency_warning
+          }
+          portfolios = {
+            enabled = param.portfolios
+          }
+        }
+      }
+    )
   }
 
   output "space" {
