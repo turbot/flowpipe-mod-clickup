@@ -2,10 +2,10 @@ pipeline "create_space" {
   title       = "Create Space"
   description = "Add a new Space to a Workspace."
 
-  param "api_token" {
+  param "cred" {
     type        = string
-    description = local.api_token_param_description
-    default     = var.api_token
+    description = local.cred_param_description
+    default     = "default"
   }
 
   param "team_id" {
@@ -107,49 +107,13 @@ pipeline "create_space" {
     url    = "${local.clickup_api_endpoint}/team/${param.team_id}/space"
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = param.api_token
+      Authorization = "${credential.clickup[param.cred].token}"
     }
 
-    request_body = jsonencode(
-      {
-        name               = param.name
-        multiple_assignees = param.multiple_assignees
-        private            = param.private
-        features = {
-          due_dates = {
-            enabled               = param.due_dates
-            start_date            = param.start_date
-            remap_due_dates       = param.remap_due_dates
-            remap_closed_due_date = param.remap_closed_due_date
-          }
+    request_body = jsonencode({
+      for name, value in param : name => value if value != null
+    })
 
-          time_tracking = {
-            enabled = param.time_tracking
-          }
-          tags = {
-            enabled = param.tags
-          }
-          time_estimates = {
-            enabled = param.time_estimates
-          }
-          checklists = {
-            enabled = param.checklists
-          }
-          custom_fields = {
-            enabled = param.custom_fields
-          }
-          remap_dependencies = {
-            enabled = param.remap_dependencies
-          }
-          dependency_warning = {
-            enabled = param.dependency_warning
-          }
-          portfolios = {
-            enabled = param.portfolios
-          }
-        }
-      }
-    )
   }
 
   output "space" {

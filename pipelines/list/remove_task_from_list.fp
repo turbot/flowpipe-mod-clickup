@@ -2,10 +2,10 @@ pipeline "remove_task_from_list" {
   title       = "Remove Task From List"
   description = "Remove a task from an additional List."
 
-  param "api_token" {
+  param "cred" {
     type        = string
-    description = local.api_token_param_description
-    default     = var.api_token
+    description = local.cred_param_description
+    default     = "default"
   }
 
   param "list_id" {
@@ -21,8 +21,9 @@ pipeline "remove_task_from_list" {
   step "http" "remove_task_from_list" {
     method = "delete"
     url    = "${local.clickup_api_endpoint}/list/${param.list_id}/task/${param.task_id}"
+
     request_headers = {
-      Authorization = param.api_token
+      Authorization = "${credential.clickup[param.cred].token}"
     }
   }
 }

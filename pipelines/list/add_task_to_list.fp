@@ -2,10 +2,10 @@ pipeline "add_task_to_list" {
   title       = "Add Task To List"
   description = "Add a task to an additional List."
 
-  param "api_token" {
+  param "cred" {
     type        = string
-    description = local.api_token_param_description
-    default     = var.api_token
+    description = local.cred_param_description
+    default     = "default"
   }
 
   param "list_id" {
@@ -21,8 +21,9 @@ pipeline "add_task_to_list" {
   step "http" "add_task_to_list" {
     method = "post"
     url    = "${local.clickup_api_endpoint}/list/${param.list_id}/task/${param.task_id}"
+
     request_headers = {
-      Authorization = param.api_token
+      Authorization = "${credential.clickup[param.cred].token}"
     }
   }
 }

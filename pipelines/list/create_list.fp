@@ -2,10 +2,10 @@ pipeline "create_list" {
   title       = "Create List"
   description = "Add a new List to a Folder."
 
-  param "api_token" {
+  param "cred" {
     type        = string
-    description = local.api_token_param_description
-    default     = var.api_token
+    description = local.cred_param_description
+    default     = "default"
   }
 
   param "folder_id" {
@@ -27,18 +27,17 @@ pipeline "create_list" {
   step "http" "create_list" {
     method = "post"
     url    = "${local.clickup_api_endpoint}/folder/${param.folder_id}/list"
+
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = param.api_token
+      Authorization = "${credential.clickup[param.cred].token}"
     }
 
     # We can add more fields here as per requirements
-    request_body = jsonencode(
-      {
-        name     = param.name
-        assignee = param.assignee
-      }
-    )
+    request_body = jsonencode({
+      for name, value in param : name => value if value != null
+    })
+
   }
 
   output "list" {

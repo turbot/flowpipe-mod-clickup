@@ -2,10 +2,10 @@ pipeline "update_folder" {
   title       = "Update Folder"
   description = "Rename a Folder."
 
-  param "api_token" {
+  param "cred" {
     type        = string
-    description = local.api_token_param_description
-    default     = var.api_token
+    description = local.cred_param_description
+    default     = "default"
   }
 
   param "folder_id" {
@@ -21,16 +21,15 @@ pipeline "update_folder" {
   step "http" "update_folder" {
     method = "put"
     url    = "${local.clickup_api_endpoint}/folder/${param.folder_id}"
+
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = param.api_token
+      Authorization = "${credential.clickup[param.cred].token}"
     }
 
-    request_body = jsonencode(
-      {
-        name = param.name
-      }
-    )
+    request_body = jsonencode({
+      for name, value in param : name => value if value != null
+    })
   }
 
   output "folder" {

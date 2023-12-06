@@ -4,7 +4,7 @@ mod "clickup" {
   color         = "#7B68EE"
   documentation = file("./docs/index.md")
   icon          = "/images/flowpipe/mods/turbot/clickup.svg"
-  categories    = ["clickup", "library"]
+  categories    = ["clickup"]
 
   opengraph {
     title       = "ClickUp Mod for Flowpipe"

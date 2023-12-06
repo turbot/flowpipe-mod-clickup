@@ -2,10 +2,10 @@ pipeline "list_tasks" {
   title       = "List Tasks"
   description = "View the tasks in a List."
 
-  param "api_token" {
+  param "cred" {
     type        = string
-    description = local.api_token_param_description
-    default     = var.api_token
+    description = local.cred_param_description
+    default     = "default"
   }
 
   param "list_id" {
@@ -14,9 +14,11 @@ pipeline "list_tasks" {
   }
 
   step "http" "list_tasks" {
-    url = "${local.clickup_api_endpoint}/list/${param.list_id}/task?page=0"
+    method = "get"
+    url    = "${local.clickup_api_endpoint}/list/${param.list_id}/task?page=0"
+
     request_headers = {
-      Authorization = param.api_token
+      Authorization = "${credential.clickup[param.cred].token}"
     }
 
     loop {

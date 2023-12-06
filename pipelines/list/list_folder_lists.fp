@@ -2,10 +2,10 @@ pipeline "list_folder_lists" {
   title       = "Get Lists"
   description = "View the Lists within a Folder."
 
-  param "api_token" {
+  param "cred" {
     type        = string
-    description = local.api_token_param_description
-    default     = var.api_token
+    description = local.cred_param_description
+    default     = "default"
   }
 
   param "folder_id" {
@@ -14,9 +14,11 @@ pipeline "list_folder_lists" {
   }
 
   step "http" "list_folder_lists" {
-    url = "${local.clickup_api_endpoint}/folder/${param.folder_id}/list"
+    method = "get"
+    url    = "${local.clickup_api_endpoint}/folder/${param.folder_id}/list"
+
     request_headers = {
-      Authorization = param.api_token
+      Authorization = "${credential.clickup[param.cred].token}"
     }
   }
 

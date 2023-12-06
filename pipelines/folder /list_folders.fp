@@ -2,11 +2,18 @@ pipeline "list_folders" {
   title       = "List Folders"
   description = "View the Folders in a Space."
 
-  param "api_token" {
+  param "cred" {
     type        = string
-    description = local.api_token_param_description
-    default     = var.api_token
+    description = local.cred_param_description
+    default     = "default"
   }
+
+  param "cred" {
+    type        = string
+    description = local.cred_param_description
+    default     = "default"
+  }
+
 
   param "space_id" {
     type        = number
@@ -14,9 +21,11 @@ pipeline "list_folders" {
   }
 
   step "http" "list_folders" {
-    url = "${local.clickup_api_endpoint}/space/${param.space_id}/folder"
+    method = "get"
+    url    = "${local.clickup_api_endpoint}/space/${param.space_id}/folder"
+
     request_headers = {
-      Authorization = param.api_token
+      Authorization = "${credential.clickup[param.cred].token}"
     }
   }
 

@@ -2,10 +2,10 @@ pipeline "create_task" {
   title       = "Create Task"
   description = "Create a new task."
 
-  param "api_token" {
+  param "cred" {
     type        = string
-    description = local.api_token_param_description
-    default     = var.api_token
+    description = local.cred_param_description
+    default     = "default"
   }
 
   param "list_id" {
@@ -26,17 +26,16 @@ pipeline "create_task" {
   step "http" "create_task" {
     method = "post"
     url    = "${local.clickup_api_endpoint}/list/${param.list_id}/task"
+
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = param.api_token
+      Authorization = "${credential.clickup[param.cred].token}"
     }
 
-    request_body = jsonencode(
-      {
-        name        = param.name
-        description = param.description
-      }
-    )
+    request_body = jsonencode({
+      for name, value in param : name => value if value != null
+    })
+
   }
 
   output "task" {

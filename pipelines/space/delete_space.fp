@@ -2,10 +2,10 @@ pipeline "delete_space" {
   title       = "Delete Space"
   description = "Delete a Space from your Workspace."
 
-  param "api_token" {
+  param "cred" {
     type        = string
-    description = local.api_token_param_description
-    default     = var.api_token
+    description = local.cred_param_description
+    default     = "default"
   }
 
   param "space_id" {
@@ -14,10 +14,11 @@ pipeline "delete_space" {
   }
 
   step "http" "delete_space" {
-    url    = "${local.clickup_api_endpoint}/space/${param.space_id}"
     method = "delete"
+    url    = "${local.clickup_api_endpoint}/space/${param.space_id}"
+
     request_headers = {
-      Authorization = param.api_token
+      Authorization = "${credential.clickup[param.cred].token}"
     }
   }
 }

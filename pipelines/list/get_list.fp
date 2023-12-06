@@ -2,10 +2,10 @@ pipeline "get_list" {
   title       = "Get List"
   description = "View information about a List."
 
-  param "api_token" {
+  param "cred" {
     type        = string
-    description = local.api_token_param_description
-    default     = var.api_token
+    description = local.cred_param_description
+    default     = "default"
   }
 
   param "list_id" {
@@ -14,9 +14,11 @@ pipeline "get_list" {
   }
 
   step "http" "get_list" {
-    url = "${local.clickup_api_endpoint}/list/${param.list_id}"
+    method = "get"
+    url    = "${local.clickup_api_endpoint}/list/${param.list_id}"
+
     request_headers = {
-      Authorization = param.api_token
+      Authorization = "${credential.clickup[param.cred].token}"
     }
   }
 

@@ -2,10 +2,10 @@ pipeline "delete_task" {
   title       = "Delete Task"
   description = "Delete a task from your Workspace."
 
-  param "api_token" {
+  param "cred" {
     type        = string
-    description = local.api_token_param_description
-    default     = var.api_token
+    description = local.cred_param_description
+    default     = "default"
   }
 
   param "task_id" {
@@ -14,11 +14,12 @@ pipeline "delete_task" {
   }
 
   step "http" "delete_task" {
-    url    = "${local.clickup_api_endpoint}/task/${param.task_id}"
     method = "delete"
+    url    = "${local.clickup_api_endpoint}/task/${param.task_id}"
+
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = param.api_token
+      Authorization = "${credential.clickup[param.cred].token}"
     }
   }
 }

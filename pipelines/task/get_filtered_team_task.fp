@@ -2,10 +2,10 @@ pipeline "get_filtered_team_task" {
   title       = "Get Filtered Team Tasks"
   description = "View the tasks that meet specific criteria from a Workspace. Responses are limited to 100 tasks per page."
 
-  param "api_token" {
+  param "cred" {
     type        = string
-    description = local.api_token_param_description
-    default     = var.api_token
+    description = local.cred_param_description
+    default     = "default"
   }
 
   param "team_id" {
@@ -14,14 +14,21 @@ pipeline "get_filtered_team_task" {
   }
 
   step "http" "get_filtered_team_task" {
-    url = "${local.clickup_api_endpoint}/team/${param.team_id}/task"
+    method = "get"
+    url    = "${local.clickup_api_endpoint}/team/${param.team_id}/task?page=0"
+
     request_headers = {
-      Authorization = param.api_token
+      Authorization = "${credential.clickup[param.cred].token}"
+    }
+
+    loop {
+      until = result.response_body.last_page == true
+      url   = "${local.clickup_api_endpoint}/team/${param.team_id}/task?page=${loop.index + 1}"
     }
   }
 
   output "tasks" {
     description = "The tasks that meet the specified criteria."
-    value       = step.http.get_filtered_team_task.response_body.tasks
+    value       = flatten([for page, tasks in step.http.get_filtered_team_task : tasks.response_body.tasks])
   }
 }

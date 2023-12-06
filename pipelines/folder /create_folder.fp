@@ -2,10 +2,10 @@ pipeline "create_folder" {
   title       = "Create New Folder"
   description = "Add a new Folder to a Space."
 
-  param "api_token" {
+  param "cred" {
     type        = string
-    description = local.api_token_param_description
-    default     = var.api_token
+    description = local.cred_param_description
+    default     = "default"
   }
 
   param "space_id" {
@@ -21,16 +21,16 @@ pipeline "create_folder" {
   step "http" "create_folder" {
     method = "post"
     url    = "${local.clickup_api_endpoint}/space/${param.space_id}/folder"
+
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = param.api_token
+      Authorization = "${credential.clickup[param.cred].token}"
     }
 
-    request_body = jsonencode(
-      {
-        name = param.name
-      }
-    )
+    request_body = jsonencode({
+      for name, value in param : name => value if value != null
+    })
+
   }
 
   output "folder" {
