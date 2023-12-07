@@ -2,6 +2,10 @@ pipeline "create_space" {
   title       = "Create Space"
   description = "Add a new Space to a Workspace."
 
+  tags = {
+    type = "featured"
+  }
+
   param "cred" {
     type        = string
     description = local.cred_param_description

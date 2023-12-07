@@ -2,6 +2,10 @@ pipeline "update_task" {
   title       = "Update Task"
   description = "Update a task."
 
+  tags = {
+    type = "featured"
+  }
+
   param "cred" {
     type        = string
     description = local.cred_param_description

@@ -2,6 +2,10 @@ pipeline "add_task_to_list" {
   title       = "Add Task To List"
   description = "Add a task to an additional List."
 
+  tags = {
+    type = "featured"
+  }
+
   param "cred" {
     type        = string
     description = local.cred_param_description

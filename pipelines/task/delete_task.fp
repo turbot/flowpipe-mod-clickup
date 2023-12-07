@@ -2,6 +2,10 @@ pipeline "delete_task" {
   title       = "Delete Task"
   description = "Delete a task from your Workspace."
 
+  tags = {
+    type = "featured"
+  }
+
   param "cred" {
     type        = string
     description = local.cred_param_description
