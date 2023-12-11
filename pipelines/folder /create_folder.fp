@@ -1,5 +1,5 @@
 pipeline "create_folder" {
-  title       = "Create New Folder"
+  title       = "Create Folder"
   description = "Add a new Folder to a Space."
 
   param "cred" {

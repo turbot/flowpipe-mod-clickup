@@ -1,5 +1,5 @@
 pipeline "remove_task_from_list" {
-  title       = "Remove Task From List"
+  title       = "Remove Task from List"
   description = "Remove a task from an additional List."
 
   param "cred" {

@@ -1,5 +1,5 @@
 pipeline "add_task_to_list" {
-  title       = "Add Task To List"
+  title       = "Add Task to List"
   description = "Add a task to an additional List."
 
   tags = {
