@@ -8,13 +8,6 @@ pipeline "list_folders" {
     default     = "default"
   }
 
-  param "cred" {
-    type        = string
-    description = local.cred_param_description
-    default     = "default"
-  }
-
-
   param "space_id" {
     type        = number
     description = "The ID of the space to list folders."

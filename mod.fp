@@ -2,7 +2,7 @@ mod "clickup" {
   title         = "ClickUp"
   description   = "Run pipelines to supercharge your ClickUp workflows using Flowpipe."
   color         = "#7B68EE"
-  documentation = file("./docs/index.md")
+  documentation = file("./README.md")
   icon          = "/images/mods/turbot/clickup.svg"
   categories    = ["productivity"]
 
