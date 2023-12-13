@@ -65,7 +65,7 @@ pipeline "my_pipeline" {
   step "pipeline" "get_task" {
     pipeline = clickup.pipeline.get_task
     args = {
-      task_id        = "26ru0ouja"
+      task_id = "26ru0ouja"
     }
   }
 }
