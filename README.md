@@ -1,8 +1,16 @@
 # ClickUp Mod for Flowpipe
 
-Run pipelines and use triggers for ClickUp resources.
+ClickUp pipeline library for [Flowpipe](https://flowpipe.io), enabling seamless integration of ClickUp services into your workflows.
 
-## Getting started
+## Documentation
+
+- **[Pipelines →](https://hub.flowpipe.io/mods/turbot/clickup/pipelines)**
+
+## Getting Started
+
+### Requirements
+
+Docker daemon must be installed and running. Please see [Install Docker Engine](https://docs.docker.com/engine/install/) for more information.
 
 ### Installation
 
@@ -20,44 +28,67 @@ git clone https://github.com/turbot/flowpipe-mod-clickup.git
 cd flowpipe-mod-clickup
 ```
 
-### Usage
+### Credentials
 
-Start your server to get started:
+By default, the following environment variables will be used for authentication:
+
+- `CLICKUP_TOKEN`
+
+You can also create `credential` resources in configuration files:
 
 ```sh
-flowpipe service start
+vi ~/.flowpipe/config/clickup.fpc
+```
+
+```hcl
+credential "clickup" "default" {
+  token = "pk_..."
+}
+```
+
+For more information on credentials in Flowpipe, please see [Managing Credentials](https://flowpipe.io/docs/run/credentials).
+
+### Usage
+
+List pipelines:
+
+```sh
+flowpipe pipeline list
 ```
 
 Run a pipeline:
 
 ```sh
-flowpipe pipeline run list_tasks
+flowpipe pipeline run list_teams
 ```
 
-### Credentials
+You can pass in pipeline arguments as well:
 
-This mod uses the credentials configured in `flowpipe.pvars` or passed through `--pipeline-args api_token`.
+```sh
+flowpipe pipeline run get_task --arg 'task_id=26ru0ouja'
+```
+
+To use a specific `credential`, specify the `cred` pipeline argument:
+
+```sh
+flowpipe pipeline run get_task --arg 'task_id=26ru0ouja' --arg cred=clickup_dev
+```
+
+For more examples on how you can run pipelines, please see [Run Pipelines](https://flowpipe.io/docs/run/pipelines).
 
 ### Configuration
 
-Pipelines have [input variables](https://flowpipe.io/docs/using-flowpipe/mod-variables) that can be configured to better match your environment and requirements. Some variables have defaults defined in its source file, e.g., `variables.hcl`, but these can be overwritten in several ways:
+No additional configuration is required.
 
-- Copy and rename the `flowpipe.pvars.example` file to `flowpipe.pvars`, and then modify the variable values inside that file
-- Pass in a value on the command line:
+## Open Source & Contributing
 
-  ```shell
-  flowpipe pipeline run list_clickup --pipeline-arg api_token="eya32asW3f323saf32..."
-  ```
+This repository is published under the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0). Please see our [code of conduct](https://github.com/turbot/.github/blob/main/CODE_OF_CONDUCT.md). We look forward to collaborating with you!
 
-These are only some of the ways you can set variables. For a full list, please see [Passing Input Variables](https://flowpipe.io/docs/using-flowpipe/mod-variables#passing-input-variables).
+[Flowpipe](https://flowpipe.io) is a product produced from this open source software, exclusively by [Turbot HQ, Inc](https://turbot.com). It is distributed under our commercial terms. Others are allowed to make their own distribution of the software, but cannot use any of the Turbot trademarks, cloud services, etc. You can learn more in our [Open Source FAQ](https://turbot.com/open-source).
 
-## Contributing
+## Get Involved
 
-If you have an idea for additional controls or just want to help maintain and extend this mod ([or others](https://github.com/topics/flowpipe-mod)) we would love you to join the community and start contributing.
-
-- **[Join our Slack community →](https://flowpipe.io/community/join)** and hang out with other Mod developers.
-
-Please see the [contribution guidelines](https://github.com/turbot/flowpipe/blob/main/CONTRIBUTING.md) and our [code of conduct](https://github.com/turbot/flowpipe/blob/main/CODE_OF_CONDUCT.md). All contributions are subject to the [Apache 2.0 open source license](https://github.com/turbot/flowpipe-mod-clickup/blob/main/LICENSE).
+**[Join #flowpipe on Slack →](https://flowpipe.io/community/join)**
 
 Want to help but not sure where to start? Pick up one of the `help wanted` issues:
 
