@@ -2,10 +2,10 @@ pipeline "update_folder" {
   title       = "Update Folder"
   description = "Rename a Folder."
 
-  param "cred" {
-    type        = string
-    description = local.cred_param_description
-    default     = "default"
+  param "conn" {
+    type        = connection.clickup
+    description = local.conn_param_description
+    default     = connection.clickup.default
   }
 
   param "folder_id" {
@@ -24,7 +24,7 @@ pipeline "update_folder" {
 
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = "${credential.clickup[param.cred].token}"
+      Authorization = "${param.conn.token}"
     }
 
     request_body = jsonencode({

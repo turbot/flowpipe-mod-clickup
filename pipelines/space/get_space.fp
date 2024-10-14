@@ -2,10 +2,10 @@ pipeline "get_space" {
   title       = "Get Space"
   description = "View the Spaces available in a Workspace."
 
-  param "cred" {
-    type        = string
-    description = local.cred_param_description
-    default     = "default"
+  param "conn" {
+    type        = connection.clickup
+    description = local.conn_param_description
+    default     = connection.clickup.default
   }
 
   param "space_id" {
@@ -18,7 +18,7 @@ pipeline "get_space" {
     url    = "${local.clickup_api_endpoint}/space/${param.space_id}"
 
     request_headers = {
-      Authorization = "${credential.clickup[param.cred].token}"
+      Authorization = "${param.conn.token}"
     }
   }
 

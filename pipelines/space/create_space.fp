@@ -6,10 +6,10 @@ pipeline "create_space" {
     type = "featured"
   }
 
-  param "cred" {
-    type        = string
-    description = local.cred_param_description
-    default     = "default"
+  param "conn" {
+    type        = connection.clickup
+    description = local.conn_param_description
+    default     = connection.clickup.default
   }
 
   param "team_id" {
@@ -111,7 +111,7 @@ pipeline "create_space" {
     url    = "${local.clickup_api_endpoint}/team/${param.team_id}/space"
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = "${credential.clickup[param.cred].token}"
+      Authorization = "${param.conn.token}"
     }
 
     request_body = jsonencode({
