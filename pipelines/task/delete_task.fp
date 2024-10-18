@@ -3,7 +3,7 @@ pipeline "delete_task" {
   description = "Delete a task from your Workspace."
 
   tags = {
-    type = "featured"
+    recommended = "true"
   }
 
   param "conn" {

@@ -3,7 +3,7 @@ pipeline "add_task_to_list" {
   description = "Add a task to an additional List."
 
   tags = {
-    type = "featured"
+    recommended = "true"
   }
 
   param "conn" {

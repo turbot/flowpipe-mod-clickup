@@ -3,7 +3,7 @@ pipeline "update_task" {
   description = "Update a task."
 
   tags = {
-    type = "featured"
+    recommended = "true"
   }
 
   param "conn" {

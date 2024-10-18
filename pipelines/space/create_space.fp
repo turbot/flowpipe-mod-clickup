@@ -3,7 +3,7 @@ pipeline "create_space" {
   description = "Add a new Space to a Workspace."
 
   tags = {
-    type = "featured"
+    recommended = "true"
   }
 
   param "conn" {
