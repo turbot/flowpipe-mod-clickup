@@ -2,10 +2,10 @@ pipeline "create_folder" {
   title       = "Create Folder"
   description = "Add a new Folder to a Space."
 
-  param "cred" {
-    type        = string
-    description = local.cred_param_description
-    default     = "default"
+  param "conn" {
+    type        = connection.clickup
+    description = local.conn_param_description
+    default     = connection.clickup.default
   }
 
   param "space_id" {
@@ -24,7 +24,7 @@ pipeline "create_folder" {
 
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = "${credential.clickup[param.cred].token}"
+      Authorization = "${param.conn.token}"
     }
 
     request_body = jsonencode({

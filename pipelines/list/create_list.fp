@@ -2,10 +2,10 @@ pipeline "create_list" {
   title       = "Create List"
   description = "Add a new List to a Folder."
 
-  param "cred" {
-    type        = string
-    description = local.cred_param_description
-    default     = "default"
+  param "conn" {
+    type        = connection.clickup
+    description = local.conn_param_description
+    default     = connection.clickup.default
   }
 
   param "folder_id" {
@@ -30,7 +30,7 @@ pipeline "create_list" {
 
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = "${credential.clickup[param.cred].token}"
+      Authorization = "${param.conn.token}"
     }
 
     # We can add more fields here as per requirements

@@ -2,10 +2,10 @@ pipeline "list_teams" {
   title       = "List Teams"
   description = "View the Teams (Workspaces) available to the authenticated user."
 
-  param "cred" {
-    type        = string
-    description = local.cred_param_description
-    default     = "default"
+  param "conn" {
+    type        = connection.clickup
+    description = local.conn_param_description
+    default     = connection.clickup.default
   }
 
   step "http" "list_teams" {
@@ -13,7 +13,7 @@ pipeline "list_teams" {
     url    = "${local.clickup_api_endpoint}/team"
 
     request_headers = {
-      Authorization = "${credential.clickup[param.cred].token}"
+      Authorization = "${param.conn.token}"
       Content-Type  = "application/json"
     }
   }

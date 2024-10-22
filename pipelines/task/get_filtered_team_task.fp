@@ -2,10 +2,10 @@ pipeline "get_filtered_team_task" {
   title       = "Get Filtered Team Tasks"
   description = "View the tasks that meet specific criteria from a Workspace. Responses are limited to 100 tasks per page."
 
-  param "cred" {
-    type        = string
-    description = local.cred_param_description
-    default     = "default"
+  param "conn" {
+    type        = connection.clickup
+    description = local.conn_param_description
+    default     = connection.clickup.default
   }
 
   param "team_id" {
@@ -18,7 +18,7 @@ pipeline "get_filtered_team_task" {
     url    = "${local.clickup_api_endpoint}/team/${param.team_id}/task?page=0"
 
     request_headers = {
-      Authorization = "${credential.clickup[param.cred].token}"
+      Authorization = "${param.conn.token}"
     }
 
     loop {

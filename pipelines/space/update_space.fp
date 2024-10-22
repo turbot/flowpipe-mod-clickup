@@ -2,10 +2,10 @@ pipeline "update_space" {
   title       = "Update Space"
   description = "Update a Space."
 
-  param "cred" {
-    type        = string
-    description = local.cred_param_description
-    default     = "default"
+  param "conn" {
+    type        = connection.clickup
+    description = local.conn_param_description
+    default     = connection.clickup.default
   }
 
   param "space_id" {
@@ -100,7 +100,7 @@ pipeline "update_space" {
   step "pipeline" "get_space" {
     pipeline = pipeline.get_space
     args = {
-      cred     = param.cred
+      conn     = param.conn
       space_id = param.space_id
     }
   }
@@ -112,7 +112,7 @@ pipeline "update_space" {
 
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = "${credential.clickup[param.cred].token}"
+      Authorization = "${param.conn.token}"
     }
 
     request_body = jsonencode(

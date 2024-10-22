@@ -2,10 +2,10 @@ pipeline "delete_folder" {
   title       = "Delete Folder"
   description = "Delete a Folder from your Workspace."
 
-  param "cred" {
-    type        = string
-    description = local.cred_param_description
-    default     = "default"
+  param "conn" {
+    type        = connection.clickup
+    description = local.conn_param_description
+    default     = connection.clickup.default
   }
 
   param "folder_id" {
@@ -18,7 +18,7 @@ pipeline "delete_folder" {
     url    = "${local.clickup_api_endpoint}/folder/${param.folder_id}"
 
     request_headers = {
-      Authorization = "${credential.clickup[param.cred].token}"
+      Authorization = "${param.conn.token}"
     }
   }
 }
