@@ -2,10 +2,10 @@ pipeline "get_task_members" {
   title       = "Get Task Members"
   description = "View the people who have access to a Task."
 
-  param "cred" {
-    type        = string
-    description = local.cred_param_description
-    default     = "default"
+  param "conn" {
+    type        = connection.clickup
+    description = local.conn_param_description
+    default     = connection.clickup.default
   }
 
   param "task_id" {
@@ -18,7 +18,7 @@ pipeline "get_task_members" {
     url    = "${local.clickup_api_endpoint}/task/${param.task_id}/member"
 
     request_headers = {
-      Authorization = "${credential.clickup[param.cred].token}"
+      Authorization = "${param.conn.token}"
     }
   }
 

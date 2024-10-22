@@ -17,25 +17,25 @@ brew tap turbot/tap
 brew install flowpipe
 ```
 
-### Credentials
+### Connections
 
 By default, the following environment variables will be used for authentication:
 
 - `CLICKUP_TOKEN`
 
-You can also create `credential` resources in configuration files:
+You can also create `connection` resources in configuration files:
 
 ```sh
 vi ~/.flowpipe/config/clickup.fpc
 ```
 
 ```hcl
-credential "clickup" "default" {
+connection "clickup" "default" {
   token = "pk_..."
 }
 ```
 
-For more information on credentials in Flowpipe, please see [Managing Credentials](https://flowpipe.io/docs/run/credentials).
+For more information on connections in Flowpipe, please see [Managing Connections](https://flowpipe.io/docs/run/connections).
 
 ### Usage
 
@@ -98,10 +98,10 @@ Run a pipeline:
 flowpipe pipeline run list_teams
 ```
 
-To use a specific `credential`, specify the `cred` pipeline argument:
+To use a specific `connection`, specify the `conn` pipeline argument:
 
 ```sh
-flowpipe pipeline run get_task --arg 'task_id=26ru0ouja' --arg cred=clickup_profile
+flowpipe pipeline run get_task --arg 'task_id=26ru0ouja' --arg conn=connection.clickup.clickup_profile
 ```
 
 ## Open Source & Contributing

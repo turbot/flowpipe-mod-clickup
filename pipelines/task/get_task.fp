@@ -2,12 +2,12 @@ pipeline "get_task" {
   title       = "Get Task"
   description = "View information about a task."
 
-  param "cred" {
-    type        = string
-    description = local.cred_param_description
-    default     = "default"
+  param "conn" {
+    type        = connection.clickup
+    description = local.conn_param_description
+    default     = connection.clickup.default
   }
-
+  
   param "task_id" {
     type        = string
     description = "The ID of the task to retrieve."
@@ -18,7 +18,7 @@ pipeline "get_task" {
     url    = "${local.clickup_api_endpoint}/task/${param.task_id}"
 
     request_headers = {
-      Authorization = "${credential.clickup[param.cred].token}"
+      Authorization = "${param.conn.token}"
     }
   }
 

@@ -2,10 +2,10 @@ pipeline "create_task" {
   title       = "Create Task"
   description = "Create a new task."
 
-  param "cred" {
-    type        = string
-    description = local.cred_param_description
-    default     = "default"
+  param "conn" {
+    type        = connection.clickup
+    description = local.conn_param_description
+    default     = connection.clickup.default
   }
 
   param "list_id" {
@@ -29,7 +29,7 @@ pipeline "create_task" {
 
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = "${credential.clickup[param.cred].token}"
+      Authorization = "${param.conn.token}"
     }
 
     request_body = jsonencode({

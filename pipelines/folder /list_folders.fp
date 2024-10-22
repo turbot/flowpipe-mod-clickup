@@ -2,10 +2,10 @@ pipeline "list_folders" {
   title       = "List Folders"
   description = "View the Folders in a Space."
 
-  param "cred" {
-    type        = string
-    description = local.cred_param_description
-    default     = "default"
+  param "conn" {
+    type        = connection.clickup
+    description = local.conn_param_description
+    default     = connection.clickup.default
   }
 
   param "space_id" {
@@ -18,7 +18,7 @@ pipeline "list_folders" {
     url    = "${local.clickup_api_endpoint}/space/${param.space_id}/folder"
 
     request_headers = {
-      Authorization = "${credential.clickup[param.cred].token}"
+      Authorization = "${param.conn.token}"
     }
   }
 
